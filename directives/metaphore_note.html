@@ -1,0 +1,4 @@
+<section ng-if="t=='yang'">*If the metaphore is bullish, the current session should potentially finish higher than the average of the two tops: <span class="blue">{{ r({f:a({f1:s.door.favg, f2:s.door.pri1*(1+(s.stat.open_pos.totf/s.stat.open_pos.cout)/100)}), p:2}).toFixed(2) }}.</span>
+</section>
+<section ng-if="t=='yin'">*If the metaphore is bearish, the current session should potentially finish lower than the average of the two bottoms: <span class="red">{{ r({f:a({f1:s.door.favg, f2:s.door.pri1/(1+(s.stat.close_pos.totf/s.stat.close_pos.cout)/100)}), p:2}).toFixed(2) }}.</span>
+</section>

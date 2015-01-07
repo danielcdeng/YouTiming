@@ -1,0 +1,78 @@
+<div ng-controller='App2'>
+    <div ng-hide='portf.error'>
+        <div class='col-sm-12 fs16'>Archived events listed <span class='fs12'> <i>in descending order on the begin-date</i>:</span></div>
+        <div class='col-sm-12 btn-group'>
+            <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse' ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}' class='btn pull-left fs14' ng-class="ticker.door.type==yang ? 'btn-info' : 'btn-warning'">{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+        </div>
+    </div>
+
+    <pre class='col-sm-12'></pre>
+
+    <div ng-show='portf.tickers2'>
+        <div class='col-sm-12'>
+            <span class='fs15'>Historical <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><span class='fs12'><i>-timing sequential number in descending order</i></span>:</span>
+        </div>
+        <!-- left yang side -->
+        <div class="col-sm-6">
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
+                </div>
+                <div class='panel-body fs14'>
+                    <!-- pagination -->
+                    <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
+                    </div>
+                    <div><br/></div>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse |
+                        range:yang:yangSP2:pageSize'>
+                        <div class='panel panel-info'>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-body'>
+                                <section>
+                                    <div class="monsea">Metaphore, Archive, {{ticker.door.dat1}}:</div>
+                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">Session:</div>
+                                    <current-session s="ticker" t="yang"></current-session>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- right yin side -->
+        <div class="col-sm-6">
+            <div class='panel panel-danger'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title txce fs18'>{{yin|uppercase}}</h3>
+                </div>
+                <div class='panel-body fs14'>
+                    <!-- pagination -->
+                    <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yin:pageSize' ng-click='selectSP22(clickpage, yin, $index + 1)' ng-class='getSP2Class(yin, $index + 1)'>{{$index + 1}}</button>
+                    </div>
+                    <div><br/></div>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | 
+                        range:yin:yinSP2:pageSize'>
+                        <div class='panel panel-warning'>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-body'>
+                                <section>
+                                    <div class="monsea">Metaphore, Archive, {{ticker.door.dat1}}:</div>
+                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">Session:</div>
+                                    <current-session s="ticker" t="yin"></current-session>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

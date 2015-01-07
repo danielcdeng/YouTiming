@@ -1,0 +1,122 @@
+﻿<div ng-controller='App1'>
+
+    <div ng-cloak ng-hide='portf.error'>
+        <br>
+        <div class='col-sm-12 fs16'>Portfolio tickers listed <span class='fs12'> <i>in descending order on the category and begin-date</i>:</span></div>
+        <div class='col-sm-12 btn-group'>
+            <!-- yang buttons -->
+            <div ng-cloak><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
+            <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
+                  ng-click='selectSP1(clicklist, yang, $index + 1)' title='{{ticker.tick.titl}}'
+                  class='btn btn-info fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span><div>
+            <!-- yin buttons -->
+            <div ng-cloak><span class='btn btn-warning cursor-dn'>{{yin|uppercase}}, the Timing of Contraction (negative, -, yin): {{yin_doors1}}</span><br>
+            <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
+                  ng-click='selectSP1(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}'
+                  class='btn btn-warning fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span></div>
+        </div>
+    </div>
+
+    <pre class='col-sm-12'></pre>
+
+    <div ng-show='portf.tickers1'>
+        <div class='col-sm-12'>
+            <br>
+            <span class='fs15'>Weekly updated.</span> (Chart: to be developed by D3.)<br>
+            <span>Choose the ticker with very high +Net% and very low <span class="pink">&minus;Net%</span> as your long-timing vehicle.</span><br>
+            <span>Choose the ticker with very high &minus;Net% and very low <span class="lightblue">+Net%</span> as your short-timing vehicle.</span><br>
+        </div>
+        <!-- left yang side -->
+        <div class="col-sm-6">
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
+                </div>
+                <div class='panel-body fs14'>
+                    <!-- pagination -->
+                    <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yang:pageSize' ng-click='selectSP1(clickpage, yang, $index + 1)' ng-class='getSP1Class(yang, $index + 1)'>{{$index + 1}}</button>
+                    </div>
+                    <div><br/></div>
+                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize'>
+                        <div class='panel panel-info'>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
+                            <div class='panel-body'>
+                                <section>Last market close: {{ticker.door.mclo}}.</section><br>
+                                <section>
+                                    <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
+                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">The Potential Average Pattern Top:</div>
+                                    <pattern-data s="ticker"></pattern-data>
+                                </section>
+                                <div class="ptsec"></div>
+                                <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yang"></metaphore-note><br>
+                                <section>
+                                    <div class="monsea">The Potential Average Session Top:</div>
+                                    <session-data r="roundup(f, p)" s="ticker" t="yang"></session-data>
+                                </section>
+                                <div class="ptsec"></div>
+                                <section>
+                                    <div class="monsea">The Potential Average Top Months:</div>
+                                    <monthly-season g="getColor(d)" s="ticker" t="yang"></monthly-season>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">The Current Session:</div>
+                                    <current-session s="ticker" t="yang"></current-session>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- right yin side -->
+        <div class="col-sm-6">
+            <div class='panel panel-danger'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title txce fs18'>{{yin|uppercase}}</h3>
+                </div>
+                <div class='panel-body fs14'>
+                    <!-- pagination -->
+                    <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yin:pageSize' ng-click='selectSP1(clickpage, yin, $index + 1)' ng-class='getSP1Class(yin, $index + 1)'>{{$index + 1}}</button>
+                    </div>
+                    <div><br/></div>
+                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize'>
+                        <div class='panel panel-warning'>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
+                            <div class='panel-body'>
+                                <section>Last market close: {{ticker.door.mclo}}.</section><br>
+                                <section>
+                                    <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
+                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">The Potential Average Pattern Bottom:</div>
+                                    <pattern-data s="ticker"></pattern-data>
+                                </section>
+                                <div class="ptsec"></div>
+                                <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yin"></metaphore-note><br>
+                                <section>
+                                    <div class="monsea">The Potential Average Session Bottom:</div>
+                                    <session-data r="roundup(f, p)" s="ticker" t="yin"></session-data>
+                                </section>
+                                <div class="ptsec"></div>
+                                <section>
+                                    <div class="monsea">The Potential Average Bottom Months:</div>
+                                    <monthly-season g="getColor(d)" s="ticker" t="yin"></monthly-season>
+                                </section><br>
+                                <section>
+                                    <div class="monsea">The Current Session:</div>
+                                    <current-session s="ticker" t="yin"></current-session>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

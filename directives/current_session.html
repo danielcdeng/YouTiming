@@ -1,0 +1,28 @@
+<div ng-if="t=='yang'">
+    <table class='table'>
+        <tr>
+            <th>Begin <span class='fs12 fwno'>(to forecast)</span></th>
+            <th>Top <span class='fs12 fwno'>(since)</span></th>
+            <th>+Net%</th>
+        </tr>
+        <tr>
+            <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
+            <td>{{s.sess.dat2}}, <span class="blue"><span>{{s.sess.pri2}}</span></span></td>
+            <td>{{s.sess.netp}}</td>
+        </tr>
+    </table>
+</div>
+<div ng-if="t=='yin'">
+    <table class='table'>
+        <tr>
+            <th>Begin <span class='fs12 fwno'>(to forecast)</span></th>
+            <th>Bottom <span class='fs12 fwno'>(since)</span></th>
+            <th>&minus;Net%</th>
+        </tr>
+        <tr>
+            <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
+            <td>{{s.sess.dat2}}, <span class="red"><span>{{s.sess.pri2}}</span></span></td>
+            <td>{{s.sess.netp}}</td>
+        </tr>
+    </table>
+</div>

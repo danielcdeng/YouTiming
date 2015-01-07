@@ -1,0 +1,1 @@
+var YouTiming = angular.module('YouTiming', ['customFilter', 'ngRoute']);

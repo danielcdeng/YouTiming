@@ -1,0 +1,16 @@
+<div ng-if="t=='yang'">
+	<ul>
+	    <li>Accumulated +Net%: +{{s.stat.open_pos.totf}}%</li>
+	    <li>Average top: <span ng-if="s.stat.open_pos.cout > 0" class="blue">{{ r({f:s.door.pri1*(1+(s.stat.open_pos.totf/s.stat.open_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if="s.stat.open_pos.cout == 0">n/a</span></li>
+	    <li><span class="pink">Defects (no Top): {{s.stat.open_neg.cout}}</span></li>
+	    <li><span class="pink">Total &minus;Net%: {{s.stat.open_neg.totf}}%</span></li>
+	</ul>
+</div>
+<div ng-if="t=='yin'">
+    <ul>
+        <li>Accumulated &minus;Net%: <span ng-if="s.stat.close_pos.cout > 0">{{ r({f:(1/(((s.stat.close_pos.totf/s.stat.close_pos.cout)/100)+1)-1)*100*s.stat.close_pos.cout, p:2}).toFixed(1) }}%</span><span ng-if="s.stat.close_pos.cout == 0">0.0%</span></li>
+        <li>Average bottom: <span ng-if="s.stat.close_pos.cout > 0" class="red">{{ r({f:s.door.pri1/(1+(s.stat.close_pos.totf/s.stat.close_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if="s.stat.close_pos.cout == 0">n/a</span></li>
+        <li><span class="lightblue">Defects (no Bottom): {{s.stat.close_neg.cout}}</span></li>
+        <li><span class="lightblue">Total +Net%: <span ng-if="s.stat.close_neg.cout > 0">+{{ r({f:(1/(((s.stat.close_neg.totf/s.stat.close_neg.cout)/100)+1)-1)*100*s.stat.close_neg.cout, p:2}).toFixed(1) }}%</span><span ng-if="s.stat.close_neg.cout == 0">0.0%</span></span></li>
+    </ul>
+</div>
