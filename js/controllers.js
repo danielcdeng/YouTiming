@@ -4,9 +4,10 @@
 // Duty: GET active.json (portfolio).
 // Code: 0 - init app, 1 - portfolio app, 2 - archive app
 //
-YouTiming.controller('App0', ['$scope', '$http', 'modeldir', 
-    'weekfname', 'portfname', 'tickerPerPage', 'yang', 'yin',
-    function($scope, $http, modeldir, weekfname, portfname, tickerPerPage, yang, yin) {
+YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir', 
+    'weekfname', 'portfname', 'tickerPerPage', 'getData', 
+    function($scope, yang, yin, modeldir, weekfname, portfname,
+        tickerPerPage, getData) {
     //
 	$scope.weekly = {};
     $scope.portf = {};
@@ -24,7 +25,8 @@ YouTiming.controller('App0', ['$scope', '$http', 'modeldir',
         $scope.yinSP1 = 1;
     }
 	// portfolio--do this for TList controller
-	$http.get(modeldir + portfname)
+	//$http.get(modeldir + portfname)
+    getData.getJSON(modeldir + portfname)
 	.success(function(response, status, headers, config) {
     	$scope.portf.tickers1 = response;
         // for the sorting on forecast date in view
@@ -56,7 +58,7 @@ YouTiming.controller('App0', ['$scope', '$http', 'modeldir',
         }
 	})
 	.error(function(response, status, headers, config) {
-console.log("Parsing error: active.json");
+        console.log("Parsing error: active.json");
 		$scope.portf.error = status;
 	});
 }]);
@@ -66,12 +68,11 @@ console.log("Parsing error: active.json");
 // Duty: when the index.html firstly gets loaded, this guy doesn't do anything;
 //       it is mainly responsible for pagination if ther user clicks.
 //
-YouTiming.controller('App1', ['$scope', '$http', '$routeParams',  
+YouTiming.controller('App1', ['$scope', 'yang', 'yin',
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 
-    'yang', 'yin', 'histdir', 'clicklist', 'clickpage', 'pageHash',
-    function($scope, $http, $routeParams, yangPageActiveClass,
-        yinPageActiveClass, tickerPerPage, yang, yin, histdir, clicklist, clickpage,
-        pageHash) {
+    'clicklist', 'clickpage', 'pageHash',
+    function($scope, yang, yin, yangPageActiveClass, yinPageActiveClass,
+        tickerPerPage, clicklist, clickpage, pageHash) {
     //
     $scope.clicklist = clicklist;
     $scope.clickpage = clickpage;
@@ -140,12 +141,12 @@ YouTiming.controller('App1', ['$scope', '$http', '$routeParams',
 // This controller is used in app2.html, the archive page.
 // Duty: to GET single ticker's historical JSON data.
 //
-YouTiming.controller('App2', ['$scope', '$http', '$routeParams',  
+YouTiming.controller('App2', ['$scope', '$routeParams', 'yang', 'yin',
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 
-    'yang', 'yin', 'histdir', 'clicklist', 'clickpage', 'pageHash',
-    function($scope, $http, $routeParams,  
-                yangPageActiveClass, yinPageActiveClass, tickerPerPage, 
-                yang, yin, histdir, clicklist, clickpage, pageHash) {
+    'histdir', 'clicklist', 'clickpage', 'pageHash', 'getData',
+    function($scope, $routeParams, yang, yin,
+        yangPageActiveClass, yinPageActiveClass, tickerPerPage, 
+        histdir, clicklist, clickpage, pageHash, getData) {
     //
     $scope.clicklist = clicklist;
     $scope.clickpage = clickpage;
@@ -223,7 +224,8 @@ YouTiming.controller('App2', ['$scope', '$http', '$routeParams',
         $scope.yin_doors2 = 0;
         $scope.page2_index_cutoff = [];
         var ticker = $routeParams.ticker;
-        $http.get(histdir + ticker + '.json')
+        //$http.get(histdir + ticker + '.json')
+        getData.getJSON(histdir + ticker + '.json')
         .success(function(response, status, headers, config) {
             $scope.portf.tickers2 = response;
             // actually no need to define again (already done in main.js)
@@ -287,13 +289,12 @@ YouTiming.controller('App2', ['$scope', '$http', '$routeParams',
 // This controller is used in flock.html.
 // Duty: gather all the ones of the same forecast from the archive in the portfolio.
 //
-YouTiming.controller('Flock', ['$scope', '$http', '$routeParams',
-    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 
-    'yang', 'yin', 'modeldir', 'portfname', 'histdir', 'arcfname',
-    'clicklist', 'clickpage',
-    function($scope, $http, $routeParams, yangPageActiveClass,
-                yinPageActiveClass, tickerPerPage, yang, yin, modeldir, portfname,
-                histdir, arcfname, clicklist, clickpage) {
+YouTiming.controller('Flock', ['$scope', '$routeParams', 'yang', 'yin', 
+    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir',
+    'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData',
+    function($scope, $routeParams, yang, yin, 
+        yangPageActiveClass, yinPageActiveClass, tickerPerPage, modeldir,
+        portfname, histdir, arcfname, clicklist, clickpage, getData) {
     //
     $scope.clicklist = clicklist;
     $scope.clickpage = clickpage;
@@ -342,7 +343,8 @@ YouTiming.controller('Flock', ['$scope', '$http', '$routeParams',
     // 1. try to get the forecast code from the archive
     $scope.flock.ticker = $routeParams.ticker;
     $scope.flock.dat1 = $routeParams.dat1;
-    $http.get(histdir + $scope.flock.ticker + '.json')
+    //$http.get(histdir + $scope.flock.ticker + '.json')
+    getData.getJSON(histdir + $scope.flock.ticker + '.json')
     .success(function(response, status, headers, config) {
         var tlist = response;
         for(var i = 0, len = tlist.length; i < len; ++i) {
@@ -352,7 +354,8 @@ YouTiming.controller('Flock', ['$scope', '$http', '$routeParams',
             }
         }
         // 2. get all the ticker-names from the portfolio
-        $http.get(modeldir + portfname)
+        //$http.get(modeldir + portfname)
+        getData.getJSON(modeldir + portfname)
         .success(function(response, status, headers, config) {
             var tlist = response;
             for(var i = 0, len = tlist.length; i < len; ++i) {
@@ -367,7 +370,8 @@ YouTiming.controller('Flock', ['$scope', '$http', '$routeParams',
             }
             if(!$scope.flock.fore) { console.log('Error: Flock, 003'); return; }
             // 3. serach each archived ticker and find the same forecast
-            $http.get(histdir + arcfname)
+            //$http.get(histdir + arcfname)
+            getData.getJSON(histdir + arcfname)
             .success(function(response, status, headers, config) {
                 var tlist = response, idx = 0;
                 for(var i = 0, len = tlist.length; i < len; ++i) {

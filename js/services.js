@@ -1,3 +1,10 @@
+// Get JSON data via $http
+YouTiming.service('getData', ['$http', function($http) {
+    this.getJSON = function(filename) {
+        return $http.get(filename);
+    };
+}]);
+
 // Treat this service as a hash to store clicked page # for App1.
 // This is done because the service is a singleton. 
 YouTiming.service('pageHash', function() {
