@@ -3,7 +3,8 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
     this.getJSON = function(filename) {
         return $http.get(filename);
     };
-    this.getStockQuote = function(ticker) {
+    this.getQuote = function(ticker) {
+//console.log(ticker);
         var url = 'http://query.yahooapis.com/v1/public/yql';
         var data = encodeURIComponent(
             "select * from yahoo.finance.quotes where symbol in ('" + ticker + "')");

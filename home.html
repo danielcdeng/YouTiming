@@ -43,7 +43,7 @@
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
                                 <section ng-controller='StockQuote'>
-                                    <span><span class="monsea">Quote</span> ({{lang}}): {{lastTradeDate}}, {{lastTradeTime}}, {{lastTradePriceOnly}}</span>
+                                    <button type='button' class='btn btn-default' ng-click='getQuote(ticker.tick.name)'>Update Quote:</button>&nbsp;&nbsp;<span>{{lastTradeTime}} {{lastTradeDate}}, {{lastTradePriceOnly}}</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
@@ -91,7 +91,7 @@
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
                                 <section ng-controller='StockQuote'>
-                                    <span><span class="monsea">Quote</span> ({{lang}}): {{lastTradeDate}}, {{lastTradeTime}}, {{lastTradePriceOnly}}</span>
+                                    <button type='button' class='btn btn-default' ng-click='getQuote(ticker.tick.name)'>Update Quote:</button>&nbsp;&nbsp;<span>{{lastTradeTime}} {{lastTradeDate}}, {{lastTradePriceOnly}}</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
