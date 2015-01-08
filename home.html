@@ -22,7 +22,7 @@
     <div ng-show='portf.tickers1'>
         <div class='col-sm-12'>
             <br>
-            <span class='fs15'>Weekly updated.</span> (Chart: to be developed by D3.)<br>
+            <span class='fs15'>Market metaphore weekly updated.</span> (Chart: to be developed by D3.)<br>
             <span>Choose the ticker with very high +Net% and very low <span class="pink">&minus;Net%</span> as your bull-timing vehicle.</span><br>
             <span>Choose the ticker with very high &minus;Net% and very low <span class="lightblue">+Net%</span> as your bear-timing vehicle.</span><br>
         </div>
@@ -42,7 +42,9 @@
                         <div class='panel panel-info'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
-                                <section>Last market close: {{ticker.door.mclo}}.</section><br>
+                                <section ng-controller='StockQuote'>
+                                    <span><span class="monsea">Quote</span> ({{lang}}): {{lastTradeDate}}, {{lastTradeTime}}, {{lastTradePriceOnly}}</span>
+                                </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
@@ -88,7 +90,9 @@
                         <div class='panel panel-warning'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
-                                <section>Last market close: {{ticker.door.mclo}}.</section><br>
+                                <section ng-controller='StockQuote'>
+                                    <span><span class="monsea">Quote</span> ({{lang}}): {{lastTradeDate}}, {{lastTradeTime}}, {{lastTradePriceOnly}}</span>
+                                </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>

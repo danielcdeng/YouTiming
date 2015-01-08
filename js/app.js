@@ -1,1 +1,1 @@
-var YouTiming = angular.module('YouTiming', ['customFilter', 'ngRoute']);
+var YouTiming = angular.module('YouTiming', ['customFilter', 'ngRoute', 'ngResource']);

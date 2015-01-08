@@ -1,9 +1,7 @@
-﻿//
-// This is the init controller used in index.html whose
+﻿// This is the init controller used in index.html whose
 // main view is app1.html. This guy only gets executed once.
 // Duty: GET active.json (portfolio).
 // Code: 0 - init app, 1 - portfolio app, 2 - archive app
-//
 YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir', 
     'weekfname', 'portfname', 'tickerPerPage', 'getData', 
     function($scope, yang, yin, modeldir, weekfname, portfname,
@@ -63,11 +61,9 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
 	});
 }]);
 
-//
 // This controller is used in app1.html which is the main view of index.html.
 // Duty: when the index.html firstly gets loaded, this guy doesn't do anything;
 //       it is mainly responsible for pagination if ther user clicks.
-//
 YouTiming.controller('App1', ['$scope', 'yang', 'yin',
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 
     'clicklist', 'clickpage', 'pageHash',
@@ -137,10 +133,8 @@ YouTiming.controller('App1', ['$scope', 'yang', 'yin',
     };
 }]);
 
-//
 // This controller is used in app2.html, the archive page.
 // Duty: to GET single ticker's historical JSON data.
-//
 YouTiming.controller('App2', ['$scope', '$routeParams', 'yang', 'yin',
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 
     'histdir', 'clicklist', 'clickpage', 'pageHash', 'getData',
@@ -285,10 +279,8 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'yang', 'yin',
     }
 }]);
 
-//
 // This controller is used in flock.html.
 // Duty: gather all the ones of the same forecast from the archive in the portfolio.
-//
 YouTiming.controller('Flock', ['$scope', '$routeParams', 'yang', 'yin', 
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir',
     'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData',
@@ -426,3 +418,16 @@ YouTiming.controller('Flock', ['$scope', '$routeParams', 'yang', 'yin',
         return;
     });
 }]);
+
+// Get stock quote in home.html
+YouTiming.controller('StockQuote', ['$scope', 'getData',
+    function($scope, getData) {
+        var api = getData.getStockQuote($scope.ticker.tick.name);
+        var data = api.get({symbol:$scope.ticker.tick.name}, function() {
+            var quote = data.query.results.quote;
+            $scope.lang = data.query.lang;
+            $scope.lastTradeDate = quote.LastTradeDate;
+            $scope.lastTradeTime = quote.LastTradeTime;
+            $scope.lastTradePriceOnly = quote.LastTradePriceOnly;
+        });
+}]); 
