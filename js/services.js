@@ -4,12 +4,18 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
         return $http.get(filename);
     };
     this.getQuote = function(ticker) {
-//console.log(ticker);
-        var url = 'http://query.yahooapis.com/v1/public/yql';
-        var data = encodeURIComponent(
-            "select * from yahoo.finance.quotes where symbol in ('" + ticker + "')");
-        url += '?q=' + data + '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
-        return $resource(url);
+//console.log('Get quote: ' + ticker + ', typeof = ' + typeof(ticker));
+        if(typeof(ticker) === 'string') {
+            var url = 'http://query.yahooapis.com/v1/public/yql';
+            var data = encodeURIComponent(
+                "select * from yahoo.finance.quotes where symbol in ('" + ticker + "')");
+            url += '?q=' + data + '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
+            return $resource(url);
+        }
+        else {
+            console.log('Error in service getData.getQuote(): ticker not a string')
+            return null;
+        }
     }
 }]);
 

@@ -44,6 +44,9 @@
 .cursor-dn {
     cursor: s-resize;
 }
+.cursor-on {
+    cursor: default;
+}
 .cursor-up {
     cursor: n-resize;
 }

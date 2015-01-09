@@ -1,4 +1,4 @@
-// For custom defined html element 'current-yang-session':
+// For custom defined html element 'current-session':
 YouTiming.directive("currentSession", function() {
    return {
        restrict: 'E',
@@ -13,7 +13,7 @@ YouTiming.directive("currentSession", function() {
    }
 });
 
-// For custom defined html element 'monthly-season':
+// For custom defined html element 'metaphore-note':
 YouTiming.directive("metaphoreNote", function() {
    return {
        restrict: 'E',
@@ -57,7 +57,7 @@ YouTiming.directive("patternData", function() {
    }
 });
 
-// For custom defined html element 'pattern-data':
+// For custom defined html element 'session-data':
 YouTiming.directive("sessionData", function() {
    return {
        restrict: 'E',
@@ -71,3 +71,4 @@ YouTiming.directive("sessionData", function() {
        }
    }
 });
+

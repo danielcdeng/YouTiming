@@ -43,7 +43,8 @@
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
                                 <section ng-controller='StockQuote'>
-                                    <button type='button' class='btn btn-default' ng-click='getQuote(ticker.tick.name)'>Update Quote:</button>&nbsp;&nbsp;<span>{{lastTradeTime}} {{lastTradeDate}}, {{lastTradePriceOnly}}</span>
+                                    Quote: <button class='cursor-on' ng-init='getQuote(ticker.tick.name)' ng-mouseover='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs10">*Mouse enters the box to get the quote updated.</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
@@ -91,7 +92,8 @@
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
                                 <section ng-controller='StockQuote'>
-                                    <button type='button' class='btn btn-default' ng-click='getQuote(ticker.tick.name)'>Update Quote:</button>&nbsp;&nbsp;<span>{{lastTradeTime}} {{lastTradeDate}}, {{lastTradePriceOnly}}</span>
+                                    Quote: <button class='cursor-on' ng-init='getQuote(ticker.tick.name)' ng-mouseover='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs10">*Mouse enters the box to get the quote updated.</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>

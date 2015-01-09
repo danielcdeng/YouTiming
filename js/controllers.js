@@ -436,9 +436,10 @@ YouTiming.controller('StockQuote', ['$scope', 'getData',
             $scope.lastTradePriceOnly = quote.LastTradePriceOnly;
         });
         */
-        function getQuote(ticker) {
-            var api = getData.getQuote(ticker);
-            var data = api.get({symbol:ticker}, function() {
+        function getQuote(symbol) {
+            var api = getData.getQuote(symbol);
+            if(api == null) return;
+            var data = api.get({symbol:symbol}, function() {
                 var quote = data.query.results.quote;
                 $scope.lang = data.query.lang;
                 $scope.lastTradeDate = quote.LastTradeDate;
