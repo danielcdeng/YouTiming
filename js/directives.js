@@ -52,7 +52,9 @@ YouTiming.directive("patternData", function() {
        replace: false,
        scope: {
            // defining the directive's attributes:
-           s: '='  // '=': object-binding, the two-way binding
+           g: '&',
+           s: '=',  // '=': object-binding, the two-way binding
+           t: '@'
        }
    }
 });

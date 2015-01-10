@@ -39,12 +39,12 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize'>
-                        <div class='panel panel-info'>
+                        <div class='panel panel-info' ng-controller='StockQuote' ng-mousemove='getQuote(ticker.tick.name)'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
-                                <section ng-controller='StockQuote'>
-                                    Quote: <button class='cursor-on btn btn-info' ng-focus='getQuote(ticker.tick.name)' ng-mouseover='getQuote(ticker.tick.name)' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs10">*Click or move the cursor on top of the box to get the quote updated.</span>
+                                <section>
+                                    Quote: <button class='cursor-on btn btn-info' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs11">*Just move the cursor around or click the box to get the quote updated.</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
@@ -52,7 +52,7 @@
                                 </section><br>
                                 <section>
                                     <div class="monsea">The Potential Average Pattern Top:</div>
-                                    <pattern-data s="ticker"></pattern-data>
+                                    <pattern-data g="getColor(d)" s="ticker" t="yang"></pattern-data>
                                 </section>
                                 <div class="ptsec"></div>
                                 <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yang"></metaphore-note><br>
@@ -88,12 +88,12 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize'>
-                        <div class='panel panel-warning'>
+                        <div class='panel panel-warning' ng-controller='StockQuote' ng-mousemove='getQuote(ticker.tick.name)'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
                             <div class='panel-body'>
                                 <section ng-controller='StockQuote'>
-                                    Quote: <button class='cursor-on btn btn-warning' ng-focus='getQuote(ticker.tick.name)' ng-mouseover='getQuote(ticker.tick.name)' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs10">*Click or move the cursor on top of the box to get the quote updated.</span>
+                                    Quote: <button class='cursor-on btn btn-warning' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs11">*Just move the cursor around or click the box to get the quote updated.</span>
                                 </section><br>
                                 <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
@@ -101,7 +101,7 @@
                                 </section><br>
                                 <section>
                                     <div class="monsea">The Potential Average Pattern Bottom:</div>
-                                    <pattern-data s="ticker"></pattern-data>
+                                    <pattern-data g="getColor(d)" s="ticker" t="yin"></pattern-data>
                                 </section>
                                 <div class="ptsec"></div>
                                 <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yin"></metaphore-note><br>

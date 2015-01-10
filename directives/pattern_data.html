@@ -1,4 +1,4 @@
 <ul>
     <li>Total past patterns: {{s.door.fcas}}</li>
-    <li>Average top: <span ng-if="s.door.fcas > 0" class="blue">{{s.door.favg}}</span><span ng-if="s.door.fcas == 0">n/a</span></li>
+    <li>Average <span ng-if="t=='yang'">top</span><span ng-if="t=='yin'">bottom</span>: <span ng-if="s.door.fcas > 0" ng-class="g({d:t})">{{s.door.favg}}</span><span ng-if="s.door.fcas == 0">n/a</span></li>
 </ul>
