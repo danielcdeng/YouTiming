@@ -13,6 +13,18 @@ YouTiming.directive("currentSession", function() {
    }
 });
 
+// Last date and price processed:
+YouTiming.directive("lastDatePriceProc", function() {
+  return {
+      restrict: 'E',
+      templateUrl: 'directives/last_date_price_proc.html',
+      replace: false,
+      scope: {
+        s: '='
+      }
+  }
+});
+
 // For custom defined html element 'metaphore-note':
 YouTiming.directive("metaphoreNote", function() {
    return {
