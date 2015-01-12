@@ -423,7 +423,7 @@ YouTiming.controller('Flock', ['$scope', '$routeParams', 'yang', 'yin',
     }]
 );
 
-// Get stock quote in home.html
+// Get stock quote in home.html.
 YouTiming.controller('StockQuote', ['$scope', 'getData',
     function($scope, getData) {
         /*
@@ -452,4 +452,4 @@ YouTiming.controller('StockQuote', ['$scope', 'getData',
         //
         $scope.getQuote = getQuote;
     }]
-); 
+);
