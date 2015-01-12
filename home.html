@@ -15,7 +15,7 @@
                   ng-click='selectSP1(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}'
                   class='btn btn-warning fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span></div>
             <!-- countries list -->
-            <div class='fs12'>*Countries list: ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
+            <div class='fs12'>*Countries list: ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
         </div>
     </div><br>
 
@@ -39,12 +39,14 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize'>
-                        <div class='panel panel-info' ng-controller='StockQuote' ng-mousemove='getQuote(ticker.tick.name)'>
+                        <div class='panel panel-info' ng-controller='StockQuote'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
-                            <div class='panel-body'>
+                            <div class='panel-body'
+                                 ng-mousemove='getQuote(ticker.tick.name)'
+                                 ng-click='getQuote(ticker.tick.name)'>
                                 <section>
-                                    Quote: <button class='cursor-on btn btn-info' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs11">*Just move the cursor around or click the box to get the quote updated.</span>
+                                    Quote: <button class='cursor-on btn btn-info'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section><br>
                                 <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
                                 <section>
@@ -89,12 +91,14 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize'>
-                        <div class='panel panel-warning' ng-controller='StockQuote' ng-mousemove='getQuote(ticker.tick.name)'>
+                        <div class='panel panel-warning' ng-controller='StockQuote'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
-                            <div class='panel-body'>
+                            <div class='panel-body'
+                                 ng-mousemove='getQuote(ticker.tick.name)'
+                                 ng-click='getQuote(ticker.tick.name)'>
                                 <section>
-                                    Quote: <button class='cursor-on btn btn-warning' ng-click='getQuote(ticker.tick.name)'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs11">*Just move the cursor around or click the box to get the quote updated.</span>
+                                    Quote: <button class='cursor-on btn btn-warning'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section><br>
                                 <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
                                 <section>
