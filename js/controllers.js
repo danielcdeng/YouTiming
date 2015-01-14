@@ -282,147 +282,6 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'yang', 'yin',
     }]
 );
 
-// This controller is used in flock.html.
-// Duty: gather all the ones of the same forecast from the archive in the portfolio.
-YouTiming.controller('Flock', ['$scope', '$routeParams', 'yang', 'yin', 
-    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir',
-    'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData',
-    function($scope, $routeParams, yang, yin, 
-        yangPageActiveClass, yinPageActiveClass, tickerPerPage, modeldir,
-        portfname, histdir, arcfname, clicklist, clickpage, getData) {
-        //
-        $scope.clicklist = clicklist;
-        $scope.clickpage = clickpage;
-        //
-        $scope.getFlockPageClass = function(type, page) {
-            switch(type) {
-                case yang: return $scope.yangFlockSP == page ? yangPageActiveClass : '';
-                case yin: return $scope.yinFlockSP == page ? yinPageActiveClass : '';
-                default: alert('Error: Flock, 001');
-            }
-        };
-        //
-        $scope.selectFlockPage = function(from, type, index) {
-            var page = 0;
-            if(from == clicklist) {
-                var num = parseInt(index);
-                var page = Math.floor(num / tickerPerPage);
-                if(num % tickerPerPage != 0) ++page;
-            }
-            else page = index;
-            switch(type) {
-                case yang:
-                    $scope.yangFlockSP = page;
-                    break;
-                case yin: 
-                    $scope.yinFlockSP = page;
-                    break;
-                default: alert('Error: Flock, 002');
-            }
-        };
-        //
-        $scope.yangFlockSP = 1;
-        $scope.yinFlockSP = 1;
-        //
-        $scope.flock = {};
-        $scope.flock.tickers = [];
-        $scope.flock.yang_doors = 0;
-        $scope.flock.yin_doors = 0;
-        $scope.flock.ticker = null; // ticker rounted
-        $scope.flock.dat1 = null; // dat1 routed
-        $scope.flock.fore = null; // the forecast code to be found
-        $scope.flock.tnames = []; // all ticker names from the portfolio
-        $scope.flock.error = null;
-        $scope.predicate = 'door.dat1';
-        $scope.reverse = true;
-        // 1. try to get the forecast code from the archive
-        $scope.flock.ticker = $routeParams.ticker;
-        $scope.flock.dat1 = $routeParams.dat1;
-        //$http.get(histdir + $scope.flock.ticker + '.json')
-        getData.getJSON(histdir + $scope.flock.ticker + '.json')
-        .success(function(response, status, headers, config) {
-            var tlist = response;
-            for(var i = 0, len = tlist.length; i < len; ++i) {
-                if(tlist[i].door.dat1 == $scope.flock.dat1) {
-                    $scope.flock.fore = tlist[i].door.fore;
-                    break;
-                }
-            }
-            // 2. get all the ticker-names from the portfolio
-            //$http.get(modeldir + portfname)
-            getData.getJSON(modeldir + portfname)
-            .success(function(response, status, headers, config) {
-                var tlist = response;
-                for(var i = 0, len = tlist.length; i < len; ++i) {
-                    $scope.flock.tnames[i] = tlist[i].tick.name; // store all the tickers
-                    if(!$scope.flock.fore) {
-                        // if fore not found in archive, user must click from home
-                        if(tlist[i].tick.name == $scope.flock.ticker && 
-                            tlist[i].door.dat1 == $scope.flock.dat1) {
-                            $scope.flock.fore = tlist[i].door.fore;
-                        }
-                    }
-                }
-                if(!$scope.flock.fore) { console.log('Error: Flock, 003'); return; }
-                // 3. serach each archived ticker and find the same forecast
-                //$http.get(histdir + arcfname)
-                getData.getJSON(histdir + arcfname)
-                .success(function(response, status, headers, config) {
-                    var tlist = response, idx = 0;
-                    for(var i = 0, len = tlist.length; i < len; ++i) {
-                        if($scope.flock.fore == tlist[i].door.fore) {
-                            // match the forecast code in the archive.json
-                            var x = tlist[i], netp = '';
-                            var pri1 = parseFloat(x.door.pri1);
-                            var pri2 = parseFloat(x.sess.pri2);
-                            switch(x.door.type) {
-                                case yang:
-                                    if(pri2 <= pri1) pri2 = undefined; 
-                                    break;
-                                case yin:
-                                    if(pri2 >= pri1) pri2 = undefined;
-                                    break;
-                            }
-                            //
-                            if(pri2 === undefined) { x.sess.dat2 = 'n/a'; x.sess.pri2 = 'n/a'; }
-                            $scope.flock.tickers[idx] = x;
-                            switch(x.door.type) {
-                                case yang:
-                                    ++$scope.flock.yang_doors;
-                                    break;
-                                case yin:
-                                    ++$scope.flock.yin_doors;
-                                    break;
-
-                            }
-                            if(pri2) netp = (100 * (pri2 - pri1) / pri1).toFixed(1) + '%';
-                            $scope.flock.tickers[idx].sess.netp = netp;
-                            ++idx;
-                        }
-                    }
-                    //
-                    for(var i = 0, len = $scope.flock.tickers.length; i < len; ++i) {
-                        $scope.flock.tickers[i].tick.sequ = i + 1;
-                    }
-                })
-                .error(function(response, status, headers, config) {
-                    $scope.flock.error = status;
-                    console.log('Error: Flock, 004')
-                });
-            })
-            .error(function(response, status, headers, config) {
-                $scope.flock.error = status;
-                console.log('Error: Flock, 005')
-            });
-        })
-        .error(function(response, status, headers, config) {
-            $scope.flock.error = status;
-            console.log('Error: Flock, 006')
-            return;
-        });
-    }]
-);
-
 // Get stock quote in home.html.
 YouTiming.controller('StockQuote', ['$scope', 'getData',
     function($scope, getData) {
@@ -451,5 +310,108 @@ YouTiming.controller('StockQuote', ['$scope', 'getData',
         getQuote($scope.ticker.tick.name);
         //
         $scope.getQuote = getQuote;
+    }]
+);
+
+// This controller is used in trace.html.
+// Duty: gather all the ones of the same forecast from the archive in the portfolio.
+YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 
+    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir',
+    'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData',
+    function($scope, $routeParams, yang, yin, 
+        yangPageActiveClass, yinPageActiveClass, tickerPerPage, modeldir,
+        portfname, histdir, arcfname, clicklist, clickpage, getData) {
+        //
+        $scope.clicklist = clicklist;
+        $scope.clickpage = clickpage;
+        //
+        $scope.getTracePageClass = function(type, page) {
+            switch(type) {
+                case yang: return $scope.yangTraceSP == page ? yangPageActiveClass : '';
+                case yin: return $scope.yinTraceSP == page ? yinPageActiveClass : '';
+                default: alert('Error: Trace, 001');
+            }
+        };
+        //
+        $scope.selectTracePage = function(from, type, index) {
+            var page = 0;
+            if(from == clicklist) {
+                var num = parseInt(index);
+                var page = Math.floor(num / tickerPerPage);
+                if(num % tickerPerPage != 0) ++page;
+            }
+            else page = index;
+            switch(type) {
+                case yang:
+                    $scope.yangTraceSP = page;
+                    break;
+                case yin: 
+                    $scope.yinTraceSP = page;
+                    break;
+                default: alert('Error: Trace, 002');
+            }
+        };
+        //
+        $scope.yangTraceSP = 1;
+        $scope.yinTraceSP = 1;
+        //
+        $scope.trace = {};
+        $scope.trace.tickers = [];
+        $scope.trace.yang_doors = 0;
+        $scope.trace.yin_doors = 0;
+        $scope.trace.fore = null; // the forecast code to be found
+        $scope.trace.error = null;
+        $scope.predicate = 'door.dat1';
+        $scope.reverse = true;
+        // 1. try to get the forecast code from the archive
+        $scope.trace.fore = $routeParams.fore;
+        $scope.trace.type = $routeParams.type;
+        if(!$scope.trace.fore) { console.log('Error: Trace, 001'); return; }
+        // 3. serach each archived ticker and find the same forecast
+        //$http.get(histdir + arcfname)
+        getData.getJSON(histdir + arcfname)
+        .success(function(response, status, headers, config) {
+            var tlist = response, idx = 0;
+            for(var i = 0, len = tlist.length; i < len; ++i) {
+                if($scope.trace.fore == tlist[i].door.fore &&
+                    $scope.trace.type == tlist[i].door.type) {
+                    // match the forecast code in the archive.json
+                    var x = tlist[i], netp = '';
+                    var pri1 = parseFloat(x.door.pri1);
+                    var pri2 = parseFloat(x.sess.pri2);
+                    switch(x.door.type) {
+                        case yang:
+                            if(pri2 <= pri1) pri2 = undefined; 
+                            break;
+                        case yin:
+                            if(pri2 >= pri1) pri2 = undefined;
+                            break;
+                    }
+                    //
+                    if(pri2 === undefined) { x.sess.dat2 = 'n/a'; x.sess.pri2 = 'n/a'; }
+                    $scope.trace.tickers[idx] = x;
+                    switch(x.door.type) {
+                        case yang:
+                            ++$scope.trace.yang_doors;
+                            break;
+                        case yin:
+                            ++$scope.trace.yin_doors;
+                            break;
+
+                    }
+                    if(pri2) netp = (100 * (pri2 - pri1) / pri1).toFixed(1) + '%';
+                    $scope.trace.tickers[idx].sess.netp = netp;
+                    ++idx;
+                }
+            }
+            //
+            for(var i = 0, len = $scope.trace.tickers.length; i < len; ++i) {
+                $scope.trace.tickers[i].tick.sequ = i + 1;
+            }
+        })
+        .error(function(response, status, headers, config) {
+            $scope.trace.error = status;
+            console.log('Error: Trace, 002')
+        });
     }]
 );

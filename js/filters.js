@@ -33,26 +33,6 @@ angular.module('customFilter', [])
         }
     }
 })
-.filter('flockPageCount', function() {  // for tracing purpose
-    return function(data, type, size, ticker, dat1) {
-        if(angular.isArray(data)) {
-            var result = [], match = 0, page_count = 0;
-            for (var i = 0, len = data.length; i < len ; i++) {
-                if(data[i].door.type == type &&
-                   data[i].tick.name != ticker &&
-                   data[i].door.dat1 != dat1) ++match;
-                if(match == size || (i+1) == len && match > 0) {
-                    result[page_count] = ++page_count;
-                    match = 0;
-                }
-            }
-            return result;
-        }
-        else {
-            return data;
-        }
-    }
-})
 .filter('pageCount', function() {
     return function(data, type, size) {
         if(angular.isArray(data)) {
@@ -86,6 +66,24 @@ angular.module('customFilter', [])
             if(result.length == 0) return [];
             var start_index = (page - 1) * size;
             return $filter('limitTo')(result.splice(start_index), size);
+        }
+        else {
+            return data;
+        }
+    }
+})
+.filter('tracePageCount', function() {  // for tracing purpose
+    return function(data, type, size, ticker, dat1) {
+        if(angular.isArray(data)) {
+            var result = [], match = 0, page_count = 0;
+            for (var i = 0, len = data.length; i < len ; i++) {
+                ++match;
+                if(match == size || (i+1) == len && match > 0) {
+                    result[page_count] = ++page_count;
+                    match = 0;
+                }
+            }
+            return result;
         }
         else {
             return data;

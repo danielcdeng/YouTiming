@@ -27,7 +27,7 @@
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse |
                         range:yang:yangSP2:pageSize'>
                         <div class='panel panel-info'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
                                 <section>
                                     <div class="monsea">Metaphore, Archive, {{ticker.door.dat1}}:</div>
@@ -58,7 +58,7 @@
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | 
                         range:yin:yinSP2:pageSize'>
                         <div class='panel panel-warning'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/flock/{{ticker.tick.name}}/date/{{ticker.door.dat1}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
                                 <section>
                                     <div class="monsea">Metaphore, Archive, {{ticker.door.dat1}}:</div>

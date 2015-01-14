@@ -7,17 +7,17 @@ YouTiming.config(['$routeProvider', '$resourceProvider',
         .when('/about', {
             templateUrl: '/about.html'
         })
-        .when('/archive/:ticker', {             // the archive view, controller "App2"
+        .when('/archive/:ticker', {         // the archive view, controller "App2"
             templateUrl: '/archive.html'
         })
         .when('/contact', {
             templateUrl: '/contact.html'
         })
-        .when('/flock/:ticker/date/:dat1', {    // the flock view, controller "Flock"
-            templateUrl: '/flock.html'
+        .when('/trace/:fore/:type', {  // the trace view, controller "Trace"
+            templateUrl: '/trace.html'
         })
         .otherwise({
-            templateUrl: '/home.html'      // the home view, controlelr "App1"
+            templateUrl: '/home.html'       // the home view, controlelr "App1"
         });
 
         // Don't strip trailing slashes from calculated URLs
