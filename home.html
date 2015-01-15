@@ -23,8 +23,6 @@
         <div class='col-sm-12'>
             <br>
             <span class='fs15'>Market metaphore weekly updated.</span> (Chart: to be developed in D3.)<br>
-            <span>Choose the ticker with very high +Net% and very low <span class="pink">&minus;Net%</span> as your bull-timing vehicle.</span><br>
-            <span>Choose the ticker with very high &minus;Net% and very low <span class="lightblue">+Net%</span> as your bear-timing vehicle.</span><br>
         </div>
         <!-- left yang side -->
         <div class="col-sm-6">
@@ -49,11 +47,6 @@
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section><br>
                                 <section>
-                                    <div class="monsea">Current Session:</div>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
-                                </section><br>
-                                <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
-                                <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
@@ -66,10 +59,15 @@
                                 <section>
                                     <div class="monsea">The Potential Average Session Top:</div>
                                     <session-data r="roundup(f, p)" s="ticker" t="yang"></session-data>
-                                </section><br><br>
+                                </section><br>
                                 <section>
                                     <div class="monsea">The Potential Average Top Months:</div>
                                     <monthly-season g="getColor(d)" s="ticker" t="yang"></monthly-season>
+                                </section><br><br>
+                                <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
+                                <section>
+                                    <div class="monsea">Current Session:</div>
+                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
                                 </section><br>
                             </div>
                         </div>
@@ -100,11 +98,6 @@
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section><br>
                                 <section>
-                                    <div class="monsea">Current Session:</div>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
-                                </section><br>
-                                <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
-                                <section>
                                     <div class="monsea">{{ticker.door.dat1}} Metaphore:</div>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
@@ -117,10 +110,15 @@
                                 <section>
                                     <div class="monsea">The Potential Average Session Bottom:</div>
                                     <session-data r="roundup(f, p)" s="ticker" t="yin"></session-data>
-                                </section><br><br>
+                                </section><br>
                                 <section>
                                     <div class="monsea">The Potential Average Bottom Months:</div>
                                     <monthly-season g="getColor(d)" s="ticker" t="yin"></monthly-season>
+                                </section><br><br>
+                                <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc><br>
+                                <section>
+                                    <div class="monsea">Current Session:</div>
+                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
                                 </section><br>
                             </div>
                         </div>
