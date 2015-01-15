@@ -4,13 +4,11 @@
             <th>Begin <span class='fs12 fwno'></span></th>
             <th>Lowest <span class='fs12 fwno'>(interim)</span></th>
             <th>Highest <span class='fs12 fwno'></span></th>
-            <th>+Net%</th>
         </tr>
         <tr>
-            <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
-            <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='pink'>{{s.sess.pr25}}</span></td>
-            <td>{{s.sess.dat2}}, <span class='blue'><span>{{s.sess.pri2}}</span></span></td>
-            <td>{{s.sess.netp}}</td>
+            <td>{{s.door.pri1}}, {{s.door.dat1}}</td>
+            <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='pink'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
+            <td><span ng-if="s.sess.netp">+</span>{{s.sess.netp}}, <span class='blue'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>
@@ -20,13 +18,11 @@
             <th>Begin <span class='fs12 fwno'></span></th>
             <th>Highest <span class='fs12 fwno'>(interim)</span></th>
             <th>Lowest <span class='fs12 fwno'></span></th>
-            <th>&minus;Net%</th>
         </tr>
         <tr>
-            <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
-            <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='lightblue'>{{s.sess.pr25}}</span></td>
-            <td>{{s.sess.dat2}}, <span class='red'><span>{{s.sess.pri2}}</span></span></td>
-            <td>{{s.sess.netp}}</td>
+            <td>{{s.door.pri1}}, {{s.door.dat1}}</td>
+            <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='lightblue'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
+            <td>{{s.sess.netp}}, <span class='red'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>
