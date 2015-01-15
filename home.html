@@ -2,7 +2,7 @@
 
     <div ng-cloak ng-hide='portf.error'>
         <br>
-        <div class='col-sm-12'><span class='fs16'>Portfolio tickers listed</span> <span class='fs12'> <i>in descending order on the category and begin-date</i>:</span></div>
+        <div class='col-sm-12'><span class='fs16'>Tickers listed in descending order on the category and begin-date:</span></div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
             <div ng-cloak><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
@@ -21,11 +21,11 @@
 
     <div ng-show='portf.tickers1'>
         <div class='col-sm-12'>
-            <br>
-            <span class='fs15'>Market metaphore weekly updated.</span> (Chart: to be developed in D3.)<br>
+            <br><br>
+            <span class='fs16'>Market metaphore weekly updated.</span> (Chart: to be developed in D3.)<br>
         </div>
         <!-- left yang side -->
-        <div class="col-sm-6">
+        <div id='app1pos' class="col-sm-6">
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
@@ -76,7 +76,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div class="col-sm-6">
+        <div id='app1neg' class="col-sm-6">
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
                     <h3 class='panel-title txce fs18'>{{yin|uppercase}}</h3>

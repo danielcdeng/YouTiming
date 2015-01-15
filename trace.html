@@ -1,6 +1,5 @@
 <div ng-controller='Trace'>
     <div ng-hide='trace.error'>
-        <div class='col-sm-12 fs16'><br>The trace of the same type of forecast, listed <span class='fs12'> <i>in descending order on the begin-date</i>:</span></div>
         <div ng-if='trace.yang_doors > 0' class='col-sm-12 btn-group'>
             <!-- yang buttons -->
             <span class='pull-left btn btn-info cursor-up'>{{yang|uppercase}}: {{trace.yang_doors}}</span>
@@ -15,7 +14,7 @@
 
     <div ng-show='trace.tickers'>
         <!-- left yang side -->
-        <div ng-if='trace.yang_doors > 0' class='col-sm-6'>
+        <div ng-if='trace.yang_doors > 0' id='tracepos' class='col-sm-6'>
             <div class='panel panel-primary'>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
@@ -43,7 +42,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div ng-if='trace.yin_doors > 0' class='col-sm-6'>
+        <div ng-if='trace.yin_doors > 0' id='traceneg' class='col-sm-6'>
             <div class='panel panel-danger'>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
