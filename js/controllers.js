@@ -81,7 +81,7 @@ YouTiming.controller('App1', ['$scope', 'yang', 'yin',
         //
         $scope.abs = function(fval) {
             return Math.abs(fval);
-        }
+        };
         //
         $scope.average = function(f1, f2) {
             if(f1 == "n/a") f1 = 0;
@@ -90,12 +90,16 @@ YouTiming.controller('App1', ['$scope', 'yang', 'yin',
             if(v1 == 0) return v2;
             if(v2 == 0) return v1;
             return (v1 + v2) / 2;
-        }
+        };
+        //
+        $scope.convertToFloat = function(vs) {
+            return parseFloat(vs);
+        };
         //
         $scope.getColor = function(door) {
             if(door == 'yang') return "blue";
             else return "red";
-        }
+        };
         //
         $scope.getSP1Class = function(type, page) {
             switch(type) {
@@ -109,7 +113,7 @@ YouTiming.controller('App1', ['$scope', 'yang', 'yin',
         //
         $scope.roundup = function(fval, iprecision) {
             return Math.round(parseFloat(fval) * Math.pow(10, iprecision)) / Math.pow(10, iprecision);
-        }
+        };
         //
         $scope.selectSP1 = function(from, type, index) {
             var page = 0;
@@ -151,6 +155,10 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'yang', 'yin',
         if(cpage !== undefined) $scope.yangSP2 = cpage;
         cpage = pageHash.get('App2', yin, yang);
         if(cpage !== undefined) $scope.yinSP2 = cpage;
+        //
+        $scope.convertToFloat = function(vs) {
+            return parseFloat(vs);
+        };
         //
         $scope.getSP2Class = function(type, page) {
             switch(type) {
@@ -324,6 +332,10 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin',
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
+        //
+        $scope.convertToFloat = function(vs) {
+            return parseFloat(vs);
+        };
         //
         $scope.getTracePageClass = function(type, page) {
             switch(type) {

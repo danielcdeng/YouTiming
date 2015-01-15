@@ -1,13 +1,15 @@
 <div ng-if="t=='yang'">
     <table class='table'>
         <tr>
-            <th>Begin <span class='fs12 fwno'>(to forecast)</span></th>
-            <th>Higher <span class='fs12 fwno'>(since)</span></th>
+            <th>Begin <span class='fs12 fwno'></span></th>
+            <th>Lowest <span class='fs12 fwno'>(interim)</span></th>
+            <th>Highest <span class='fs12 fwno'></span></th>
             <th>+Net%</th>
         </tr>
         <tr>
             <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
-            <td>{{s.sess.dat2}}, <span class="blue"><span>{{s.sess.pri2}}</span></span></td>
+            <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='pink'>{{s.sess.pr25}}</span></td>
+            <td>{{s.sess.dat2}}, <span class='blue'><span>{{s.sess.pri2}}</span></span></td>
             <td>{{s.sess.netp}}</td>
         </tr>
     </table>
@@ -15,13 +17,15 @@
 <div ng-if="t=='yin'">
     <table class='table'>
         <tr>
-            <th>Begin <span class='fs12 fwno'>(to forecast)</span></th>
-            <th>Lower <span class='fs12 fwno'>(since)</span></th>
+            <th>Begin <span class='fs12 fwno'></span></th>
+            <th>Highest <span class='fs12 fwno'>(interim)</span></th>
+            <th>Lowest <span class='fs12 fwno'></span></th>
             <th>&minus;Net%</th>
         </tr>
         <tr>
             <td>{{s.door.dat1}}, {{s.door.pri1}}</td>
-            <td>{{s.sess.dat2}}, <span class="red"><span>{{s.sess.pri2}}</span></span></td>
+            <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='lightblue'>{{s.sess.pr25}}</span></td>
+            <td>{{s.sess.dat2}}, <span class='red'><span>{{s.sess.pri2}}</span></span></td>
             <td>{{s.sess.netp}}</td>
         </tr>
     </table>

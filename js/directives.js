@@ -6,6 +6,7 @@ YouTiming.directive("currentSession", function() {
        replace: false,
        scope: {
            // defining the directive's attributes:
+           ctf: '&',
            s: '=',  // '=': object-binding, the two-way binding
            t: '@'
        }
