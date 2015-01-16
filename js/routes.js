@@ -1,5 +1,12 @@
-YouTiming.config(['$routeProvider', '$resourceProvider', 
-    function($routeProvider, $resourceProvider) {
+YouTiming.config(['$httpProvider', '$resourceProvider', '$routeProvider',
+    function($httpProvider, $resourceProvider, $routeProvider) {
+        // Enabling CORS in AngularJS: doesn't work
+        //$httpProvider.defaults.useXDomain = true;
+        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+        // Don't strip trailing slashes from calculated URLs
+        $resourceProvider.defaults.stripTrailingSlashes = false;
+
         $routeProvider
         .when('/', {
             templateUrl: '/home.html'
@@ -19,7 +26,5 @@ YouTiming.config(['$routeProvider', '$resourceProvider',
         .otherwise({
             templateUrl: '/home.html'       // the home view, controlelr "App1"
         });
-
-        // Don't strip trailing slashes from calculated URLs
-        $resourceProvider.defaults.stripTrailingSlashes = false;
-}]);
+    }]
+);

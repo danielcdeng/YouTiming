@@ -22,7 +22,7 @@
     <div ng-show='portf.tickers1'>
         <div class='col-sm-12'>
             <br><br>
-            <span class='fs16'>Market metaphore weekly updated.</span> (Chart: to be developed in D3.)<br>
+            <span class='fs16'>Market metaphore weekly updated.</span><br>
         </div>
         <!-- left yang side -->
         <div id='app1pos' class="col-sm-6">
@@ -37,8 +37,15 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize'>
-                        <div class='panel panel-info' ng-controller='StockQuote'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
+                        <div class='panel panel-info' ng-controller='StockREST'>
+                            <div class='panel-heading'>
+                                <h4 class='panel-title'>
+                                    <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span>
+                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
+                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span> -->
+                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a>
+                                </h4>
+                            </div>
                             <div class='panel-body'
                                  ng-mousemove='getQuote(ticker.tick.name)'
                                  ng-click='getQuote(ticker.tick.name)'>
@@ -88,8 +95,15 @@
                     </div>
                     <div><br/></div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize'>
-                        <div class='panel panel-warning' ng-controller='StockQuote'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span><a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a></h4></div>
+                        <div class='panel panel-warning' ng-controller='StockREST'>
+                            <div class='panel-heading'>
+                                <h4 class='panel-title'>
+                                    <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span>
+                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
+                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span>  -->
+                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a>
+                                </h4>
+                            </div>
                             <div class='panel-body'
                                  ng-mousemove='getQuote(ticker.tick.name)'
                                  ng-click='getQuote(ticker.tick.name)'>

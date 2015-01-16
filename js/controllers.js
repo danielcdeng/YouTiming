@@ -305,19 +305,9 @@ YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
 );
 
 // Get stock quote in home.html.
-YouTiming.controller('StockQuote', ['$scope', 'getData',
+YouTiming.controller('StockREST', ['$scope', 'getData',
     function($scope, getData) {
-        /*
-        var api = getData.getQuote($scope.ticker.tick.name);
-        var data = api.get({symbol:$scope.ticker.tick.name}, function() {
-            var quote = data.query.results.quote;
-            $scope.lang = data.query.lang;
-            $scope.lastTradeDate = quote.LastTradeDate;
-            $scope.lastTradeTime = quote.LastTradeTime;
-            $scope.lastTradePriceOnly = quote.LastTradePriceOnly;
-        });
-        */
-        function getQuote(symbol) {
+        var getQuote = function(symbol) {
             var api = getData.getQuote(symbol);
             if(api == null) return;
             var data = api.get({symbol:symbol}, function() {
@@ -327,11 +317,19 @@ YouTiming.controller('StockQuote', ['$scope', 'getData',
                 $scope.lastTradeTime = quote.LastTradeTime;
                 $scope.lastTradePriceOnly = quote.LastTradePriceOnly;
             });
-        }
-        //
+        };
         getQuote($scope.ticker.tick.name);
-        //
         $scope.getQuote = getQuote;
+        //
+        var getNews = function(symbol) {
+            // Need to resolve CORS issue before using x2js library:
+            /*
+            var api = getData.getNews(symbol);
+            var data = api.get({}, function() {
+            });
+            */
+        };
+        getNews($scope.ticker.tick.name);
     }]
 );
 
@@ -375,7 +373,7 @@ YouTiming.controller('Trace', ['$scope', '$location', '$anchorScroll',
                     $scope.yangTraceSP = page;
                     break;
                 case yin:
-                    $location('traceneg');
+                    $location.hash('traceneg');
                     $scope.yinTraceSP = page;
                     break;
                 default: alert('Error: Trace, 002');

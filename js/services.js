@@ -3,6 +3,7 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
     this.getJSON = function(filename) {
         return $http.get(filename);
     };
+    //
     this.getQuote = function(ticker) {
 //console.log('Get quote: ' + ticker + ', typeof = ' + typeof(ticker));
         if(typeof(ticker) === 'string') {
@@ -16,7 +17,19 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
             console.log('Error in service getData.getQuote(): ticker not a string')
             return null;
         }
-    }
+    };
+    //
+    this.getNews = function(ticker) {
+        if(typeof(ticker) !== 'string') {
+            console.log('Error, service getData.getNews(): ticker not a string')
+            return null;
+        }
+        //
+        var method = 'GET';
+        var url = 'http://feeds.finance.yahoo.com/rss/2.0/headline?s=' +
+            encodeURIComponent(ticker) + '&region=US&lang=en-US';
+        return $resource(url);
+    };
 }]);
 
 // Treat this service as a hash to store clicked page # for App1.
