@@ -1,0 +1,123 @@
+body {
+    font-family: 'Lato', verdana, arial, sans-serif;
+    /* line-height: 1.5em;  /* not much effect, probably I didn't use reset.css */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* font-size: 100%;
+       font: inherit; */
+    vertical-align: baseline;
+}
+
+.clearfix {
+    clear: both;
+}
+
+/* bootstrap extra */
+.panel-primary, .panel-danger {
+    border-color: transparent;
+    border-radius: 25px;
+}
+
+/* container classes for directives */
+.yt-section-main {
+    margin: 25px 0 0 0;
+}
+.yt-section-sub {
+    margin: 15px 0 0 0;
+}
+
+/* anchor */
+ .acor {
+    text-decoration: none;
+ }
+
+/* colors */
+.blue {
+    color: blue;
+}
+.lightblue {
+    color: lightblue;
+}
+.patc { /* pattern code */
+    color: grey;
+}
+.pink {
+    color: pink;
+}
+.red { /* bearish */
+    color: red;
+}
+.steelblue {
+    color: steelblue;
+}
+
+/* cursor */
+.cursor-dn {
+    cursor: s-resize;
+}
+.cursor-on {
+    cursor: default;
+}
+.cursor-up {
+    cursor: n-resize;
+}
+
+/* fonts */
+.fs10 {
+    font-size: 10px;
+}
+.fs11 {
+    font-size: 11px;
+}
+.fs12 {
+    font-size: 12px;
+}
+.fs13 {
+    font-size: 13px;
+}
+.fs14 {
+    font-size: 14px;
+}
+.fs15 {
+    font-size: 15px;
+}
+.fs16 {
+    font-size: 16px;
+}
+.fs18 {
+    font-size: 18px;
+}
+.fsno {
+    font-style: normal;
+}
+.fwno {
+    font-weight: normal;
+}
+.fsmeta {
+    font-size: 14px;
+    font-family: arial;
+}
+
+/* table */
+.borderless tr td {
+    border: none !important;
+    padding: 0px !important;
+}
+
+/* text */
+.txce {
+    text-align: center;
+}
+.txle {
+    text-align: left;
+}
+.txno {
+    text-decoration: none;
+}
+.txun {
+    text-decoration: underline;
+}

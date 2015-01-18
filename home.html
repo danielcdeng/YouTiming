@@ -2,7 +2,7 @@
 
     <div ng-cloak ng-hide='portf.error'>
         <br>
-        <div class='col-sm-12'><span class='fs16'>Tickers listed in descending order on the category and begin-date:</span></div>
+        <div class='col-sm-12'><span class='fs16'>Tickers listed in descending order according to the begin-date:</span></div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
             <div ng-cloak><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
@@ -17,12 +17,13 @@
             <!-- countries list -->
             <div class='fs12'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
         </div>
-    </div><br>
+    </div>
+    <div class="yt-section-main"></div>
 
     <div ng-show='portf.tickers1'>
         <div class='col-sm-12'>
             <br><br>
-            <span class='fs16'>Market metaphore weekly updated.</span><br>
+            <span class='fs16'>Weekly processed:</span><br>
         </div>
         <!-- left yang side -->
         <div id='app1pos' class="col-sm-6">
@@ -35,8 +36,7 @@
                     <div class='btn-group'>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yang:pageSize' ng-click='selectSP1(clickpage, yang, $index + 1)' ng-class='getSP1Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div><br/></div>
-                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize' class='yt-section-sub'>
                         <div class='panel panel-info' ng-controller='StockREST'>
                             <div class='panel-heading'>
                                 <h4 class='panel-title'>
@@ -53,29 +53,26 @@
                                     Quote: <button class='cursor-on btn btn-info'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
-                                <div class="pt30"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>{{ticker.door.dat1}} Metaphore:</h4>
                                     <div class='fsmeta'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
-                                <div class="pt10"></div>
-                                <section>
+                                <section class='yt-section-sub'>
                                     <h5>The Potential Average Pattern Top:</h5>
                                     <pattern-data g="getColor(d)" s="ticker" t="yang"></pattern-data>
                                 </section>
-                                <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yang"></metaphore-note>
-                                <div class="pt10"></div>
-                                <section>
+                                <section class='yt-section-sub'>
+                                    <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yang"></metaphore-note>
+                                </section>
+                                <section class='yt-section-sub'>
                                     <h5>The Potential Average Session Top:</h5>
                                     <session-data r="roundup(f, p)" s="ticker" t="yang"></session-data>
                                 </section>
-                                <div class="pt15"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>Potential Average Top Months:</h4>
                                     <monthly-season g="getColor(d)" s="ticker" t="yang"></monthly-season>
                                 </section>
-                                <div class="pt30"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>Current Session:</h4>
                                     <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc>
                                     <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
@@ -97,8 +94,7 @@
                     <div class='btn-group'>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yin:pageSize' ng-click='selectSP1(clickpage, yin, $index + 1)' ng-class='getSP1Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div><br/></div>
-                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize' class='yt-section-sub'>
                         <div class='panel panel-warning' ng-controller='StockREST'>
                             <div class='panel-heading'>
                                 <h4 class='panel-title'>
@@ -115,29 +111,26 @@
                                     Quote: <button class='cursor-on btn btn-warning'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
-                                <div class="pt30"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>{{ticker.door.dat1}} Metaphore:</h4>
                                     <div class='fsmeta'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
-                                <div class="pt10"></div>
-                                <section>
+                                <section class='yt-section-sub'>
                                     <h5>The Potential Average Pattern Bottom:</h5>
                                     <pattern-data g="getColor(d)" s="ticker" t="yin"></pattern-data>
                                 </section>
-                                <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yin"></metaphore-note>
-                                <div class="pt10"></div>
-                                <section>
+                                <section class='yt-section-sub'>
+                                    <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yin"></metaphore-note>
+                                </section>
+                                <section class='yt-section-sub'>
                                     <h5>The Potential Average Session Bottom:</h5>
                                     <session-data r="roundup(f, p)" s="ticker" t="yin"></session-data>
                                 </section>
-                                <div class="pt15"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>Potential Average Bottom Months:</h4>
                                     <monthly-season g="getColor(d)" s="ticker" t="yin"></monthly-season>
                                 </section>
-                                <div class="pt30"></div>
-                                <section>
+                                <section class='yt-section-main'>
                                     <h4>Current Session:</h4>
                                     <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc>
                                     <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>

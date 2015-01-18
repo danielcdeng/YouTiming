@@ -1,5 +1,7 @@
 boc
-css/
+css
+css/bootstrap-3.2.0
+css/yuic
 gitbr
 gitlog
 gitus
@@ -9,3 +11,5 @@ model
 node_modules/
 server.js
 yuic
+yuici
+yuich
