@@ -1,6 +1,7 @@
 body {
     font-family: 'Lato', verdana, arial, sans-serif;
     /* line-height: 1.5em;  /* not much effect, probably I didn't use reset.css */
+    background:#465c8f url(../image/bg-image.jpg) repeat-x;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,17 +18,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* bootstrap extra */
-.panel-primary, .panel-danger {
+.panel-primary, .panel-danger, .panel-heading {
     border-color: transparent;
-    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 10px;
 }
 
 /* container classes for directives */
+.yt-panel {
+    margin-right: -1px;
+    margin-left: -1px;
+}
 .yt-section-main {
-    margin: 25px 0 0 0;
+    margin: 20px auto;
 }
 .yt-section-sub {
-    margin: 15px 0 0 0;
+    margin: 10px auto;
 }
 
 /* anchor */
@@ -53,6 +60,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .steelblue {
     color: steelblue;
+}
+.white {
+    color: #fff;
 }
 
 /* cursor */

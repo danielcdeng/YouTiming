@@ -1,33 +1,33 @@
 ﻿<div ng-controller='App1'>
-
     <div ng-cloak ng-hide='portf.error'>
         <br>
-        <div class='col-sm-12'><span class='fs16'>Tickers listed in descending order according to the begin-date:</span></div>
+        <div class='col-sm-12'><span class='fs16 white'>Tickers listed in descending order according to the begin-date:</span></div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
-            <div ng-cloak><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
+            <div ng-cloak class='yt-section-sub'><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
             <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
                   ng-click='selectSP1(clicklist, yang, $index + 1)' title='{{ticker.tick.titl}}'
-                  class='btn btn-info fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span></div>
+                  class='btn btn-info fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            </div>
             <!-- yin buttons -->
-            <div ng-cloak><span class='btn btn-warning cursor-dn'>{{yin|uppercase}}, the Timing of Contraction (negative, -, yin): {{yin_doors1}}</span></br>
+            <div ng-cloak class='yt-section-sub'><span class='btn btn-warning cursor-dn'>{{yin|uppercase}}, the Timing of Contraction (negative, -, yin): {{yin_doors1}}</span></br>
             <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
                   ng-click='selectSP1(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}'
-                  class='btn btn-warning fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span></div>
+                  class='btn btn-warning fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            </div>
             <!-- countries list -->
-            <div class='fs12'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
+            <div class='fs12 white'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
         </div>
     </div>
-    <div class="yt-section-main"></div>
 
-    <div ng-show='portf.tickers1'>
+    <div ng-show='portf.tickers1' class='yt-section-main'>
         <div class='col-sm-12'>
             <br><br>
-            <span class='fs16'>Weekly processed:</span><br>
+            <span class='fs16 white'>Weekly processed:</span><br>
         </div>
         <!-- left yang side -->
         <div id='app1pos' class="col-sm-6">
-            <div class='panel panel-primary'>
+            <div class='panel panel-primary yt-panel'>
                 <div class='panel-heading'>
                     <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
                 </div>

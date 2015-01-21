@@ -5,11 +5,9 @@
         </div>
     </div>
 
-    <pre class='col-sm-12'></pre>
-
     <div ng-show='portf.tickers2'>
         <!-- left yang side -->
-        <div id='app2pos' class="col-sm-6">
+        <div id='app2pos' class='col-sm-6 yt-section-sub'>
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
@@ -17,11 +15,9 @@
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
-                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
+                        <button type='button' class='btn btn-default yt-section-sub' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div><br/></div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse |
-                        range:yang:yangSP2:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-sub'>
                         <div class='panel panel-info'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
@@ -40,7 +36,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div id='app2neg' class="col-sm-6">
+        <div id='app2neg' class='col-sm-6 yt-section-sub'>
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
                     <h3 class='panel-title txce fs18'>{{yin|uppercase}}</h3>
@@ -50,9 +46,7 @@
                     <div class='btn-group'>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yin:pageSize' ng-click='selectSP22(clickpage, yin, $index + 1)' ng-class='getSP2Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div><br/></div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | 
-                        range:yin:yinSP2:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-sub'>
                         <div class='panel panel-warning'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='fs12'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
