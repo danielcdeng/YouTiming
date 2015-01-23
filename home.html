@@ -4,16 +4,27 @@
         <div class='col-sm-12'><span class='fs16 white'>Tickers listed in descending order according to the begin-date:</span></div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
-            <div ng-cloak class='yt-section-sub'><span class='btn btn-info cursor-up'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
-            <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
-                  ng-click='selectSP1(clicklist, yang, $index + 1)' title='{{ticker.tick.titl}}'
-                  class='btn btn-info fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <div ng-cloak class='yt-section-sub yt-text-shadow'>
+                <span class='btn btn-info cursor-up yt-door-border'>{{yang|uppercase}}, the Timing of Expansion (positive, +, yang): {{yang_doors1}}</span><br>
+                <span
+                    ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
+                    ng-click='selectSP1(clicklist, yang, $index + 1)'
+                    title='{{ticker.tick.titl}}'
+                    class='btn btn-info fs14 yt-text-shadow'>
+                    {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                </span>
             </div>
             <!-- yin buttons -->
-            <div ng-cloak class='yt-section-sub'><span class='btn btn-warning cursor-dn'>{{yin|uppercase}}, the Timing of Contraction (negative, -, yin): {{yin_doors1}}</span></br>
-            <span ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
-                  ng-click='selectSP1(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}'
-                  class='btn btn-warning fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <div ng-cloak class='yt-section-sub yt-text-shadow'>
+                <span class='btn btn-warning cursor-dn yt-door-border'>{{yin|uppercase}}, the Timing of Contraction (negative, -, yin): {{yin_doors1}}
+                </span></br>
+                <span
+                    ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
+                    ng-click='selectSP1(clicklist, yin, $index + 1)'
+                    title='{{ticker.tick.titl}}'
+                    class='btn btn-warning fs14 yt-text-shadow'>
+                    {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                </span>
             </div>
             <!-- countries list -->
             <div class='fs12 white'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
@@ -33,7 +44,7 @@
                 </div>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
-                    <div class='btn-group'>
+                    <div class='btn-group yt-section-sub'>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yang:pageSize' ng-click='selectSP1(clickpage, yang, $index + 1)' ng-class='getSP1Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yang:yangSP1:pageSize' class='yt-section-sub'>
@@ -50,7 +61,7 @@
                                  ng-mousemove='getQuote(ticker.tick.name)'
                                  ng-click='getQuote(ticker.tick.name)'>
                                 <section>
-                                    Quote: <button class='cursor-on btn btn-info'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    Quote: <button class='cursor-on btn btn-info yt-text-shadow'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>
@@ -91,7 +102,7 @@
                 </div>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
-                    <div class='btn-group'>
+                    <div class='btn-group yt-section-sub'>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers1 | pageCount:yin:pageSize' ng-click='selectSP1(clickpage, yin, $index + 1)' ng-class='getSP1Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | range:yin:yinSP1:pageSize' class='yt-section-sub'>
@@ -108,7 +119,7 @@
                                  ng-mousemove='getQuote(ticker.tick.name)'
                                  ng-click='getQuote(ticker.tick.name)'>
                                 <section>
-                                    Quote: <button class='cursor-on btn btn-warning'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
+                                    Quote: <button class='cursor-on btn btn-warning yt-text-shadow'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
                                     <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>

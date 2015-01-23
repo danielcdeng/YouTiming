@@ -1,11 +1,11 @@
 <div ng-controller='Trace'>
     <div ng-hide='trace.error'>
-        <div ng-if='trace.yang_doors > 0' class='col-sm-12 btn-group yt-section-sub'>
+        <div ng-if='trace.yang_doors > 0' class='col-sm-12 btn-group yt-section-sub yt-text-shadow'>
             <!-- yang buttons -->
             <span class='pull-left btn btn-info cursor-up'>{{yang|uppercase}}: {{trace.yang_doors}}</span>
             <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang' ng-click='selectTracePage(clicklist, yang, $index + 1)' title='{{ticker.tick.titl}}' class='btn btn-info pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
         </div>
-        <div ng-if='trace.yin_doors > 0' class='col-sm-12 btn-group yt-section-sub'>
+        <div ng-if='trace.yin_doors > 0' class='col-sm-12 btn-group yt-section-sub yt-text-shadow'>
             <!-- yin buttons -->
             <span class='pull-left btn btn-warning cursor-dn'>{{yin|uppercase}}: {{trace.yin_doors}}</span>
             <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' ng-click='selectTracePage(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}' class='btn btn-warning pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
@@ -14,7 +14,7 @@
 
     <div ng-show='trace.tickers'>
         <!-- left yang side -->
-        <div ng-if='trace.yang_doors > 0' id='tracepos' class='col-sm-6'>
+        <div ng-if='trace.yang_doors > 0' id='tracepos' class='col-sm-6 yt-section-sub'>
             <div class='panel panel-primary'>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
@@ -41,7 +41,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div ng-if='trace.yin_doors > 0' id='traceneg' class='col-sm-6'>
+        <div ng-if='trace.yin_doors > 0' id='traceneg' class='col-sm-6 yt-section-sub'>
             <div class='panel panel-danger'>
                 <div class='panel-body fs14'>
                     <!-- pagination -->

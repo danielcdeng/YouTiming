@@ -18,23 +18,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* bootstrap extra */
+
 .panel-primary, .panel-danger, .panel-heading {
     border-color: transparent;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 10px;
+    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
 }
 
-/* container classes for directives */
-.yt-panel {
+.panel-heading {
+    margin-top: -1px;
     margin-right: -1px;
     margin-left: -1px;
-}
-.yt-section-main {
-    margin: 20px auto;
-}
-.yt-section-sub {
-    margin: 10px auto;
 }
 
 /* anchor */
@@ -45,6 +41,9 @@ h1, h2, h3, h4, h5, h6 {
 /* colors */
 .blue {
     color: blue;
+}
+.gold {
+    color: gold;
 }
 .lightblue {
     color: lightblue;
@@ -130,4 +129,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 .txun {
     text-decoration: underline;
+}
+
+/* yt classes */
+.yt-door-border {
+    border: grey solid 2px;
+}
+.yt-panel {
+    margin-right: -1px;
+    margin-left: -1px;
+}
+.yt-section-main {
+    margin: 20px auto;
+}
+.yt-section-sub {
+    margin: 10px auto;
+}
+.yt-text-shadow {
+    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
+}
+
+/* yt extra */
+div.panel {
+    transition: all 0.2s;
+    transition-delay: 0.5s;
+}
+
+div.panel:hover {
+    background: #ffffee;
 }

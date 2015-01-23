@@ -2,26 +2,52 @@
 <html>
 <head>
     <title>YouTiming</title>
-    <link rel="shortcut icon" href="image/updown.jpeg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8"/>
-    <link href="css/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap-3.2.0/css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link rel='shortcut icon' href='image/updown.jpeg'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1' charset='utf-8'/>
+    <link href='css/bootstrap-3.2.0/css/bootstrap.min.css' rel='stylesheet'/>
+    <link href='css/bootstrap-3.2.0/css/bootstrap-theme.min.css' rel='stylesheet'/>
+    <link href='css/style.css' rel='stylesheet'/>
+    <link href='css/menu.css' rel='stylesheet'/>
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 
-<body ng-app="YouTiming">
-    <div ng-controller="App0">
-        <nav class="navbar navbar-default">
-            <div class="container yt-navbar-header">
-                <div class="nav navbar-header">
-                    <div class="navbar-brand"><em class="steelblue">Market Timing and Metaphore</em></div>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#/about" class="acor">About</a></li>
-                    <li><a href="#/contact" class="acor">Contact</a></li>
-                </ul>
-            </div>
+<body ng-app='YouTiming'>
+    <div ng-controller='App0'>
+        <nav class='col-sm-12' id="menu-wrap">
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li>
+                    <a href="#">Technology</a>
+                    <ul>
+                        <li><a href="#">Model</a>
+                            <ul>
+                                <li><a href="#">JSON</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">View</a>
+                            <ul>
+                                <li><a href="#">HTML5/CSS3</a></li>
+                                <li><a href="#">Bootstrap</a></li>
+                                <li><a href="#">Angular</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Whatever (*)</a>
+                            <ul>
+                                <li><a href="#">Angular</a></li>
+                                <li><a href="#">Javascript</a></li>
+                                <li><a href="#">Node (next)</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Database</a>
+                            <ul>
+                                <li><a href="#">MySQL (next)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/contact">Contact</a></li>
+            </ul>
         </nav>
         <!-- This is where the page view is at. -->
         <div ng-view>
@@ -30,39 +56,42 @@
         </div>
 
         <!-- Google Ads -->
-        <div class="col-sm-12">&nbsp;</div><br><br>
-        <div class="col-sm-12">
-            <div class="col-sm-6">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <div class='col-sm-12'>&nbsp;</div><br><br>
+        <div class='col-sm-12'>
+            <div class='col-sm-6'>
+                <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
                 <!-- yang-large-rectangle -->
-                <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8807000304301037" data-ad-slot="5273788719"></ins>
+                <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px' data-ad-client='ca-pub-8807000304301037' data-ad-slot='5273788719'></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
-            <div class="col-sm-6">
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <div class='col-sm-6'>
+                <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
                 <!-- yin-large-rectangle -->
-                <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-8807000304301037" data-ad-slot="6750521913"></ins>
+                <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px' data-ad-client='ca-pub-8807000304301037' data-ad-slot='6750521913'></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
     </div>
 
-    <div class="clearfix"></div>
-    <blockquote class="yt-section-main col-sm-12 fs12 txle white">Disclosure: a). The information contained herein is for informational purposes only. Nothing at this site should be taken as a solicitation to purchase or sell securities. Before buying or selling any stock you should do your own research and reach your own conclusion or consult a licensed financial advisor. Investing includes risks, including loss of principal. b). The portfolio may change without notice. All the market prices are quoted from Yahoo! Finance.<br/><br/></blockquote>
-    <footer class="col-sm-12 yt-section-main"><p class='fs12 white'>Copyright &copy; YouTiming.com, Daniel C. Deng, 2013-2015, USA. All Rights Reserved.</p></footer>
+    <div class='clearfix'></div>
+    <blockquote class='yt-section-main col-sm-12 fs12 txle white'>Disclosure: a). The information contained herein is for informational purposes only. Nothing at this site should be taken as a solicitation to purchase or sell securities. Before buying or selling any stock you should do your own research and reach your own conclusion or consult a licensed financial advisor. Investing includes risks, including loss of principal. b). The portfolio may change without notice. All the market prices are quoted from Yahoo! Finance.<br/><br/></blockquote>
+    <footer class='col-sm-12 yt-section-main'><p class='fs12 white'>Copyright &copy; YouTiming.com/eMarkeTrend.com, Daniel C. Deng, 2003-2015, USA. All Rights Reserved.</p></footer>
     <br>
 </body>
 
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular/angular-route.min.js"></script>
-    <script src="lib/angular/angular-resource.min.js"></script>
+    <script src='lib/angular/angular.min.js'></script>
+    <script src='lib/angular/angular-route.min.js'></script>
+    <script src='lib/angular/angular-resource.min.js'></script>
 
-    <script src="js/app.js"></script>
-    <script src="js/constants.js"></script>
-    <script src="js/routes.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/filters.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src='js/app.js'></script>
+    <script src='js/constants.js'></script>
+    <script src='js/routes.js'></script>
+    <script src='js/directives.js'></script>
+    <script src='js/services.js'></script>
+    <script src='js/filters.js'></script>
+    <script src='js/controllers.js'></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src='js/jquery.js'></script>
 
 </html>

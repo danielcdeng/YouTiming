@@ -1,7 +1,7 @@
 <div ng-controller='App2'>
     <div ng-hide='portf.error'>
         <div class='col-sm-12 btn-group'>
-            <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse' ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}' class='btn pull-left fs14' ng-class="ticker.door.type==yang ? 'btn-info' : 'btn-warning'">{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse' ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}' class='btn pull-left fs14 yt-text-shadow' ng-class="ticker.door.type==yang ? 'btn-info' : 'btn-warning'">{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
-                        <button type='button' class='btn btn-default yt-section-sub' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
+                        <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-sub'>
                         <div class='panel panel-info'>
