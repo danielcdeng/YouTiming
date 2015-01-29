@@ -1,149 +1,156 @@
 body {
-    font-family: 'Lato', verdana, arial, sans-serif;
-    /* line-height: 1.5em;  /* not much effect, probably I didn't use reset.css */
-    background:#465c8f url(../image/bg-image.jpg) repeat-x;
+    font-family:'Lato', verdana, arial, sans-serif;
+    /* line-height:1.5em;  /* not much effect, probably I didn't use reset.css */
+    /* background:#465c8f url(../image/bg-image.jpg) repeat-x; */
+    background:#e9f0f5;
+    max-width:960px;
+    overflow:auto;
+    margin:auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    /* font-size: 100%;
-       font: inherit; */
-    vertical-align: baseline;
+    margin:0;
+    padding:0;
+    border:0;
+    /* font-size:100%;
+       font:inherit; */
+    vertical-align:baseline;
 }
 
 .clearfix {
-    clear: both;
+    clear:both;
 }
 
 /* bootstrap extra */
 
 .panel-primary, .panel-danger, .panel-heading {
-    border-color: transparent;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 10px;
+    border-color:transparent;
+    -webkit-border-radius:25px;
+    -moz-border-radius:25px;
+    border-radius:10px;
     text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
 }
 
 .panel-heading {
-    margin-top: -1px;
-    margin-right: -1px;
-    margin-left: -1px;
+    margin-top:-1px;
+    margin-right:-1px;
+    margin-left:-1px;
 }
 
 /* anchor */
  .acor {
-    text-decoration: none;
+    text-decoration:none;
  }
 
 /* colors */
 .blue {
-    color: blue;
+    color:blue;
 }
 .gold {
-    color: gold;
+    color:gold;
 }
 .lightblue {
-    color: lightblue;
+    color:lightblue;
 }
 .patc { /* pattern code */
-    color: grey;
+    color:grey;
 }
 .pink {
-    color: pink;
+    color:pink;
 }
 .red { /* bearish */
-    color: red;
+    color:red;
 }
 .steelblue {
-    color: steelblue;
+    color:steelblue;
 }
-.white {
-    color: #fff;
+.txtcolor {
+    color:#000;
 }
 
 /* cursor */
 .cursor-dn {
-    cursor: s-resize;
+    cursor:s-resize;
 }
 .cursor-on {
-    cursor: default;
+    cursor:default;
 }
 .cursor-up {
-    cursor: n-resize;
+    cursor:n-resize;
 }
 
 /* fonts */
 .fs10 {
-    font-size: 10px;
+    font-size:10px;
 }
 .fs11 {
-    font-size: 11px;
+    font-size:11px;
 }
 .fs12 {
-    font-size: 12px;
+    font-size:12px;
 }
 .fs13 {
-    font-size: 13px;
+    font-size:13px;
 }
 .fs14 {
-    font-size: 14px;
+    font-size:14px;
 }
 .fs15 {
-    font-size: 15px;
+    font-size:15px;
 }
 .fs16 {
-    font-size: 16px;
+    font-size:16px;
 }
 .fs18 {
-    font-size: 18px;
+    font-size:18px;
 }
 .fsno {
-    font-style: normal;
+    font-style:normal;
 }
 .fwno {
-    font-weight: normal;
+    font-weight:normal;
 }
 .fsmeta {
-    font-size: 14px;
-    font-family: arial;
+    font-size:14px;
+    font-family:arial;
 }
 
 /* table */
 .borderless tr td {
-    border: none !important;
-    padding: 0px !important;
+    border:none !important;
+    padding:0px !important;
 }
 
 /* text */
 .txce {
-    text-align: center;
+    text-align:center;
 }
 .txle {
-    text-align: left;
+    text-align:left;
 }
 .txno {
-    text-decoration: none;
+    text-decoration:none;
 }
 .txun {
-    text-decoration: underline;
+    text-decoration:underline;
 }
 
 /* yt classes */
-.yt-door-border {
-    border: grey solid 2px;
+.yt-yang-door-border {
+    border:lightblue solid 2px;
+}
+.yt-yin-door-border {
+    border:pink solid 2px;
 }
 .yt-panel {
-    margin-right: -1px;
-    margin-left: -1px;
+    margin-right:-1px;
+    margin-left:-1px;
 }
 .yt-section-main {
-    margin: 20px auto;
+    margin:20px auto;
 }
 .yt-section-sub {
-    margin: 10px auto;
+    margin:10px auto;
 }
 .yt-text-shadow {
     text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
@@ -151,10 +158,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* yt extra */
 div.panel {
-    transition: all 0.2s;
-    transition-delay: 0.5s;
+    transition:all 0.2s;
+    transition-delay:0.5s;
 }
 
 div.panel:hover {
-    background: #ffffee;
+    background:#ffffee;
 }

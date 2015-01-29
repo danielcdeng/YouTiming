@@ -1,20 +1,38 @@
 <div ng-controller='App2'>
     <div ng-hide='portf.error'>
         <div class='col-sm-12 btn-group'>
-            <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse' ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}' class='btn pull-left fs14 yt-text-shadow' ng-class="ticker.door.type==yang ? 'btn-info' : 'btn-warning'">{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <!-- yang buttons -->
+            <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
+                <span
+                    ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yang'
+                    ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)'
+                    title='{{ticker.tick.titl}}'
+                    class='btn btn-info fs14 yt-text-shadow'>{{ticker.door.dat1}}
+                </span>
+            </div>
+            <!-- yin buttons -->
+            <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
+                <span
+                    ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yin'
+                    ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)'
+                    title='{{ticker.tick.titl}}'
+                    class='btn btn-warning fs14 yt-text-shadow'>{{ticker.door.dat1}}
+                </span>
+            </div>
         </div>
     </div>
 
     <div ng-show='portf.tickers2'>
         <!-- left yang side -->
-        <div id='app2pos' class='col-sm-6 yt-section-sub'>
+        <div id='app2pos' class='col-sm-6 yt-section-main'>
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title txce fs18'>{{yang|uppercase}}</h3>
+                    <h3 class='panel-title txce fs18'>PUC</h3>
                 </div>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-sub'>
@@ -36,14 +54,15 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div id='app2neg' class='col-sm-6 yt-section-sub'>
+        <div id='app2neg' class='col-sm-6 yt-section-main'>
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title txce fs18'>{{yin|uppercase}}</h3>
+                    <h3 class='panel-title txce fs18'>PDC</h3>
                 </div>
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
+                        <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yin:pageSize' ng-click='selectSP22(clickpage, yin, $index + 1)' ng-class='getSP2Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-sub'>

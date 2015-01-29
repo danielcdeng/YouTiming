@@ -65,12 +65,11 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
 // This controller is used in app1.html which is the main view of index.html.
 // Duty: when the index.html firstly gets loaded, this guy doesn't do anything;
 //       it is mainly responsible for pagination if ther user clicks.
-YouTiming.controller('App1', ['$scope', '$location', '$anchorScroll',
+YouTiming.controller('App1', ['$scope', 'pageScroll', 
     'yang', 'yin', 'yangPageActiveClass', 'yinPageActiveClass',
-    'tickerPerPage', 'clicklist', 'clickpage', 'pageHash',
-    function($scope, $location, $anchorScroll, 
-        yang, yin, yangPageActiveClass, yinPageActiveClass,
-        tickerPerPage, clicklist, clickpage, pageHash) {
+    'tickerPerPage', 'clicklist', 'clickpage', 'pageHash',  
+    function($scope, pageScroll, yang, yin, yangPageActiveClass, 
+        yinPageActiveClass, tickerPerPage, clicklist, clickpage, pageHash) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -112,6 +111,8 @@ YouTiming.controller('App1', ['$scope', '$location', '$anchorScroll',
             }
         };
         //
+        $scope.pageScroll = pageScroll;
+        //
         $scope.roundup = function(fval, iprecision) {
             return Math.round(parseFloat(fval) * Math.pow(10, iprecision)) / Math.pow(10, iprecision);
         };
@@ -127,35 +128,33 @@ YouTiming.controller('App1', ['$scope', '$location', '$anchorScroll',
             //
             pageHash.put('App1', type, page, yang); // store the clicked page # into the service singleton
             //
-            var old = $location.hash();
+            var position = null;
             switch(type) {
                 case yang:
-                    $location.hash('app1pos');
+                    position = 'app1pos';
                     $scope.yangSP1 = page;
                     break;
                 case yin: 
-                    $location.hash('app1neg');
+                    position = 'app1neg';
                     $scope.yinSP1 = page;
                     break;
-                default: alert('Error: App2, 002');
+                default:
+                    anchorScoll.top();
+                    break;
             }
-            //
-            $anchorScroll();
-            $location.hash(old);
+            pageScroll.page(position);
         };
     }]
 );
 
-// This controller is used in app2.html, the archive page.
+// This controller is used in archive.html.
 // Duty: to GET single ticker's historical JSON data.
-YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
-    '$routeParams', 'yang', 'yin', 'yangPageActiveClass',
-    'yinPageActiveClass', 'tickerPerPage', 'histdir', 'clicklist',
-    'clickpage', 'pageHash', 'getData',
-    function($scope, $location, $anchorScroll, $routeParams,
-        yang, yin, yangPageActiveClass, yinPageActiveClass,
-        tickerPerPage, histdir, clicklist, clickpage,
-        pageHash, getData) {
+YouTiming.controller('App2', ['$scope', '$routeParams', 
+    'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 'yinPageActiveClass', 
+    'tickerPerPage', 'histdir', 'clicklist', 'clickpage', 'pageHash', 'getData', 
+    function($scope, $routeParams, pageScroll, yang, yin, 
+        yangPageActiveClass, yinPageActiveClass, tickerPerPage, histdir, 
+        clicklist, clickpage, pageHash, getData) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -177,17 +176,10 @@ YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
             }
         };
         //
+        $scope.pageScroll = pageScroll;
+        //
         $scope.selectSP21 = function(from, type, index) {
             var page = 0;
-            switch(type) {
-                case yang:
-                    index -= $scope.page2_index_cutoff[index-1];
-                    break;
-                case yin: 
-                    index -= $scope.page2_index_cutoff[index-1];
-                    break;
-                default: alert('Error: App2, 002');
-            }
             //
             if(from == clicklist) {
                 var num = parseInt(index);
@@ -198,19 +190,18 @@ YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
             //
             pageHash.put('App2', type, page, yang);
             //
-            var old = $location.hash();
+            var position = null;
             switch(type) {
                 case yang:
-                    $location.hash('app2pos');
+                    position = 'app2pos';
                     $scope.yangSP2 = page;
                     break;
                 case yin:
-                    $location.hash('app2neg');
+                    position = 'app2neg';
                     $scope.yinSP2 = page;
                     break;
             }
-            $anchorScroll();
-            $location.hash(old);
+            pageScroll.page(position);
         };
         //
         $scope.selectSP22 = function(from, type, index) {
@@ -240,7 +231,6 @@ YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
             $scope.portf.tickers2 = [];
             $scope.yang_doors2 = 0;
             $scope.yin_doors2 = 0;
-            $scope.page2_index_cutoff = [];
             var ticker = $routeParams.ticker;
             //$http.get(histdir + ticker + '.json')
             getData.getJSON(histdir + ticker + '.json')
@@ -267,20 +257,6 @@ YouTiming.controller('App2', ['$scope', '$location', '$anchorScroll',
                     if(pri2 === undefined) {
                         $scope.portf.tickers2[i].sess.dat2 = 'n/a';
                         $scope.portf.tickers2[i].sess.pri2 = 'n/a';
-                    }
-                    //
-                    switch($scope.portf.tickers2[i].door.type) {
-                        case yang:
-                            if(pri2) $scope.portf.tickers2[i].sess.netp = (100*(pri2-pri1)/pri1).toFixed(1) + '%';
-                            ++$scope.yang_doors2;
-                            $scope.page2_index_cutoff[idx++] = $scope.yin_doors2;
-                            break;
-                        case yin:
-                            if(pri2) $scope.portf.tickers2[i].sess.netp = (100*(pri2-pri1)/pri1).toFixed(1) + '%';
-                            ++$scope.yin_doors2;
-                            $scope.page2_index_cutoff[idx++] = $scope.yang_doors2;
-                            break;
-                        default: alert("Error: App2, 003"); break;
                     }
                 }
                 $scope.portf.error = undefined;
@@ -335,13 +311,12 @@ YouTiming.controller('StockREST', ['$scope', 'getData',
 
 // This controller is used in trace.html.
 // Duty: gather all the ones of the same forecast from the archive in the portfolio.
-YouTiming.controller('Trace', ['$scope', '$location', '$anchorScroll', 
-    '$routeParams', 'yang', 'yin', 'yangPageActiveClass', 'yinPageActiveClass',
-    'tickerPerPage', 'modeldir', 'portfname', 'histdir', 'arcfname', 'clicklist',
-    'clickpage', 'getData',
-    function($scope, $location, $anchorScroll, $routeParams, yang, yin, 
-        yangPageActiveClass, yinPageActiveClass, tickerPerPage, modeldir,
-        portfname, histdir, arcfname, clicklist, clickpage, getData) {
+YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScroll', 
+    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir', 
+    'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData', 
+    function($scope, $routeParams, yang, yin, pageScroll, yangPageActiveClass, 
+        yinPageActiveClass, tickerPerPage, modeldir, portfname, histdir, arcfname, 
+        clicklist, clickpage, getData) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -366,25 +341,25 @@ YouTiming.controller('Trace', ['$scope', '$location', '$anchorScroll',
                 if(num % tickerPerPage != 0) ++page;
             }
             else page = index;
-            var old = $location.hash();
+            //
+            var position = null;
             switch(type) {
                 case yang:
-                    $location.hash('tracepos');
+                    position = 'tracepos';
                     $scope.yangTraceSP = page;
                     break;
                 case yin:
-                    $location.hash('traceneg');
+                    position = 'traceneg';
                     $scope.yinTraceSP = page;
                     break;
                 default: alert('Error: Trace, 002');
             }
-            $anchorScroll();
-            $location.hash(old);
+            // 2015-01-27: This guy didn't work in Trace. Come back later.
+            //pageScroll.page(position);
         };
         //
         $scope.yangTraceSP = 1;
         $scope.yinTraceSP = 1;
-        //
         $scope.trace = {};
         $scope.trace.tickers = [];
         $scope.trace.yang_doors = 0;

@@ -1,14 +1,21 @@
 <div ng-controller='Trace'>
-    <div ng-hide='trace.error'>
-        <div ng-if='trace.yang_doors > 0' class='col-sm-12 btn-group yt-section-sub yt-text-shadow'>
+    <div ng-hide='trace.error' class='col-sm-12'>
+        <div ng-if='trace.yang_doors > 0'
+             class='col-sm-6 btn-group yt-section-sub yt-text-shadow'>
             <!-- yang buttons -->
-            <span class='pull-left btn btn-info cursor-up'>{{yang|uppercase}}: {{trace.yang_doors}}</span>
-            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang' ng-click='selectTracePage(clicklist, yang, $index + 1)' title='{{ticker.tick.titl}}' class='btn btn-info pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <!--span class='pull-left btn btn-info cursor-up'>{{yang|uppercase}}: {{trace.yang_doors}}</span -->
+            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang'
+                  ng-click='selectTracePage(clicklist, yang, $index + 1)'
+                  title='{{ticker.tick.titl}}'
+                  class='btn btn-info pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
         </div>
-        <div ng-if='trace.yin_doors > 0' class='col-sm-12 btn-group yt-section-sub yt-text-shadow'>
+        <div ng-if='trace.yin_doors > 0' class='col-sm-6 btn-group yt-section-sub yt-text-shadow'>
             <!-- yin buttons -->
-            <span class='pull-left btn btn-warning cursor-dn'>{{yin|uppercase}}: {{trace.yin_doors}}</span>
-            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' ng-click='selectTracePage(clicklist, yin, $index + 1)' title='{{ticker.tick.titl}}' class='btn btn-warning pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <!-- span class='pull-left btn btn-warning cursor-dn'>{{yin|uppercase}}: {{trace.yin_doors}}</span -->
+            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' 
+                  ng-click='selectTracePage(clicklist, yin, $index + 1)' 
+                  title='{{ticker.tick.titl}}' 
+                  class='btn btn-warning pull-left fs14'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
         </div>
     </div>
 
@@ -19,6 +26,7 @@
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
+                        <!-- button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button -->
                         <button type='button' class='btn btn-default' ng-repeat='ticker in trace.tickers | tracePageCount:yang:pageSize:trace.fore' ng-click='selectTracePage(clickpage, yang, $index + 1)' ng-class='getTracePageClass(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse |
@@ -46,6 +54,7 @@
                 <div class='panel-body fs14'>
                     <!-- pagination -->
                     <div class='btn-group'>
+                        <!-- button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button -->
                         <button type='button' class='btn btn-default' ng-repeat='ticker in trace.tickers | tracePageCount:yang:pageSize:trace.fore' ng-click='selectTracePage(clickpage, yin, $index + 1)' ng-class='getTracePageClass(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
                     <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | 

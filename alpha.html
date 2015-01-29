@@ -13,66 +13,67 @@
 
 <body ng-app='YouTiming'>
     <div ng-controller='App0'>
-        <nav class='col-sm-12' id="menu-wrap">
+        <nav id='app0top' class='col-sm-12' id="menu-wrap">
             <ul id="menu">
                 <li><a href="#">Home</a></li>
+                <li><a href="#/about">About</a></li>
+                <li><a href="#/contact">Contact</a></li>
                 <li>
-                    <a href="#">Technology</a>
+                    <a href="#">Site Development</a>
                     <ul>
-                        <li><a href="#">Model</a>
+                        <li><a href="#">Model (data)</a>
                             <ul>
-                                <li><a href="#">JSON</a></li>
+                                <li><a href="#">Input (text, 4.9 Mb)</a></li>
+                                <li><a href="#">Java (mid-tier)</a></li>
+                                <li><a href="#">Output (json, 1.9 Mb)</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">View</a>
+                        <li><a href="#">View-Whatever (V*)</a>
                             <ul>
-                                <li><a href="#">HTML5/CSS3</a></li>
+                                <li><a href="#">HTML5, CSS3, Sass</a></li>
                                 <li><a href="#">Bootstrap</a></li>
-                                <li><a href="#">Angular</a></li>
+                                <li><a href="#">AngularJS</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Whatever (*)</a>
+                        <li><a href="#">MEAN Stack</a>
                             <ul>
-                                <li><a href="#">Angular</a></li>
-                                <li><a href="#">Javascript</a></li>
-                                <li><a href="#">Node (next)</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Database</a>
-                            <ul>
-                                <li><a href="#">MySQL (next)</a></li>
+                                <li><a href="#">MongoDB (next)</a></li>
+                                <li><a href="#">ExpressJS (next)</a></li>
+                                <li><a href="#">AngularJS</a></li>
+                                <li><a href="#">NodeJS (next)</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li><a href="#/about">About</a></li>
-                <li><a href="#/contact">Contact</a></li>
             </ul>
         </nav>
+
         <!-- This is where the page view is at. -->
         <div ng-view>
             <!-- Google tracking code -->
             <!-- script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-51476800-1', 'auto'); ga('send', 'pageview');</script -->
         </div>
+    </div>
 
-        <!-- Google Ads -->
-        <!-- div class='col-sm-6'>
+    <!-- Google Ads -->
+    <div class='col-sm-12 yt-section-main'>
+        <div class='col-sm-6'>
             <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-            < ! yang-large-rectangle >
-            <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px' data-ad-client='ca-pub-8807000304301037' data-ad-slot='5273788719'></ins>
+            <!-- yang-large-rectangle -->
+            <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px;' data-ad-client='ca-pub-8807000304301037' data-ad-slot='5273788719'></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
         <div class='col-sm-6'>
             <script async src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-            < ! yin-large-rectangle >
-            <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px' data-ad-client='ca-pub-8807000304301037' data-ad-slot='6750521913'></ins>
+            <!-- yin-large-rectangle -->
+            <ins class='adsbygoogle' style='display:inline-block;width:336px;height:280px;' data-ad-client='ca-pub-8807000304301037' data-ad-slot='6750521913'></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div -->
+        </div>
     </div>
 
     <div class='clearfix'></div>
-    <blockquote class='yt-section-main col-sm-12 fs12 txle white'>Disclosure: a). The information contained herein is for informational purposes only. Nothing at this site should be taken as a solicitation to purchase or sell securities. Before buying or selling any stock you should do your own research and reach your own conclusion or consult a licensed financial advisor. Investing includes risks, including loss of principal. b). The portfolio may change without notice. All the market prices are quoted from Yahoo! Finance.<br/><br/></blockquote>
-    <footer class='col-sm-12 yt-section-main'><p class='fs12 white'>Copyright &copy; YouTiming.com/eMarkeTrend.com, Daniel C. Deng, 2003-2015, USA. All Rights Reserved.</p></footer>
+    <blockquote class='col-sm-12 fs12 txle txtcolor'>Disclosure: a). The information contained herein is for informational purposes only. Nothing at this site should be taken as a solicitation to purchase or sell securities. Before buying or selling any stock you should do your own research and reach your own conclusion or consult a licensed financial advisor. Investing includes risks, including loss of principal. b). The portfolio may change without notice. All the market prices are quoted from Yahoo! Finance.<br/><br/></blockquote>
+    <footer class='col-sm-12 yt-section-main'><p class='fs12 txtcolor'>Copyright &copy; YouTiming.com/eMarkeTrend.com, Daniel C. Deng, 2003-2015, USA. All Rights Reserved.</p></footer>
 </body>
 
     <script src='lib/angular/angular.js'></script>

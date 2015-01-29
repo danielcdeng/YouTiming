@@ -1,3 +1,20 @@
+// Anchor scroll service
+YouTiming.service('pageScroll', [ '$anchorScroll', '$location', 
+    function($anchorScroll, $location) {
+        this.page = function(position) {
+            var old = $location.hash();
+            $location.hash(position);
+            $anchorScroll();
+            $location.hash(old);
+        };
+        // not used
+        this.top = function() {
+            $location.hash('');
+            $anchorScroll();
+        };
+    }]
+);
+
 // Get JSON data via $http
 YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
     this.getJSON = function(filename) {
@@ -34,27 +51,8 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
 
 // Treat this service as a hash to store clicked page # for App1.
 // This is done because the service is a singleton. 
-YouTiming.service('pageHash', function() {
+YouTiming.service('pageHash', ['$location', function($location) {
     var self = this;
-    // put
-    this.put = function(view, door, page, yang) {
-        if(view == 'App1') {
-            if(door == yang) {  // ? cannot see the constant, yang, so passed to avoid hard-coding
-                self.yangApp1 = page;
-            }
-            else {
-                self.yinApp1 = page;
-            }
-        }
-        else if(view == 'App2') {
-            if(door == yang) {
-                self.yangApp2 = page;
-            }
-            else {
-                self.yinApp2 = page;
-            }
-        }
-    }
     // get
     this.get = function(view, door, yang) {
         if(view == 'App1') {
@@ -73,5 +71,28 @@ YouTiming.service('pageHash', function() {
                 return self.yinApp2;
             }
         }
-    }
-});
+    };
+    // hash the top page
+    this.hashTopPage = function() {
+        self.topPage = $location.hash();
+    };
+    // put
+    this.put = function(view, door, page, yang) {
+        if(view == 'App1') {
+            if(door == yang) {  // ? cannot see the constant, yang, so passed to avoid hard-coding
+                self.yangApp1 = page;
+            }
+            else {
+                self.yinApp1 = page;
+            }
+        }
+        else if(view == 'App2') {
+            if(door == yang) {
+                self.yangApp2 = page;
+            }
+            else {
+                self.yinApp2 = page;
+            }
+        }
+    };
+}]);
