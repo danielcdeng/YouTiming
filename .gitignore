@@ -1,6 +1,8 @@
 .DS_Store
+.sass-cache/
+sass/_mobile_menu.scss
+sass/menu.scss
 boc
-css
 css/bootstrap-3.2.0
 css/yuic
 css/menu.css

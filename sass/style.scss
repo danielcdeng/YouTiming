@@ -1,0 +1,152 @@
+@import "style_config.scss";
+
+body {
+    font-family:'Lato', verdana, arial, sans-serif;
+    background:$body-background-color;
+    max-width:$body-max-width;
+    overflow:auto;
+    margin:auto;
+    /* line-height:1.5em;  /* not much effect, probably I didn't use reset.css */
+    /* background:#465c8f url(../image/bg-image.jpg) repeat-x; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin:0;
+    padding:0;
+    border:0;
+    /* font-size:100%;
+       font:inherit; */
+    vertical-align:baseline;
+}
+
+.clearfix {
+    clear:both;
+}
+
+/* bootstrap extra */
+
+.panel-primary, .panel-danger, .panel-heading, .panel-body, .panel-info, .panel-warning {
+    border-color:transparent;
+    -webkit-border-radius:$border-radius;
+    -moz-border-radius:$border-radius;
+    border-radius:$border-radius;
+    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
+}
+
+.panel-heading {
+    margin-top:$minus-one-margin;
+    margin-right:$minus-one-margin;
+    margin-left:$minus-one-margin;
+}
+
+/* anchor */
+ .acor {
+    text-decoration:none;
+ }
+
+/* colors and fonts */
+.block-text {
+	color:$primary-text-color;
+	font-size:$block-text-font-size;
+}
+.light-yang-color {
+    color:$light-yang-color;
+}
+.light-yin-color {
+	color:$light-yin-color;
+}
+.patc { /* pattern code */
+    color:$pattern-code-color;
+}
+.primary-text {
+	color:$primary-text-color;
+	font-size:$primary-text-font-size;
+	font-weight:normal;
+	text-align:left;
+}
+.primary-larger-text {
+	color:$primary-text-color;
+	font-size:$primary-larger-text-font-size;
+	font-weight:normal;
+}
+.route-menu {
+	color:$primary-text-color;
+	font-size:$route-menu-font-size;
+}
+.small-note {
+	color:$primary-text-color;
+    font-size:$small-note-font-size;
+}
+.yang-color {
+    color:$yang-color;
+}
+.yin-color {
+	color:$yin-color;
+}
+
+/* cursor */
+.cursor-dn {
+    cursor:s-resize;
+}
+.cursor-on {
+    cursor:default;
+}
+.cursor-up {
+    cursor:n-resize;
+}
+
+/* table */
+.borderless tr td {
+    border:none !important;
+    padding:0px !important;
+}
+
+/* yt classes */
+.yt-metaphore {
+	font-size:$primary-larger-text-font-size;
+    font-family:arial;
+}
+.yt-panel {
+    margin-right:$minus-one-margin;
+    margin-left:$minus-one-margin;
+}
+.yt-section-main {
+    margin:$double-margin auto;
+}
+.yt-section-sub {
+    margin:$basic-margin auto;
+}
+.yt-text-shadow {
+    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
+}
+.yt-yang-door-border {
+    border:$light-yang-color solid 2px;
+}
+.yt-yang-panel-header {
+	color:$yang-panel-header-color;
+	font-size:$yt-panel-header-font-size;
+	text-align:center;
+}
+.yt-yin-panel-header {
+	color:$yin-panel-header-color;
+	font-size:$yt-panel-header-font-size;
+	text-align:center;
+}
+.yt-yin-door-border {
+    border:$light-yin-color solid 2px;
+}
+
+/* yt extra */
+div.panel {
+    transition:all 0.2s;
+    transition-delay:0.4s;
+}
+div.panel-danger:hover {
+	background:$yin-hover-color;
+}
+div.panel-primary:hover {
+	background:$yang-hover-color;
+}
+div.panel-info:hover, div.panel-warning:hover {
+    background:$hover-background-color;
+}

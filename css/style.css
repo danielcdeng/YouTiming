@@ -1,167 +1,208 @@
+/* Colors */
+/* Dimension */
+/* Font Size */
+/* line 3, ../sass/style.scss */
 body {
-    font-family:'Lato', verdana, arial, sans-serif;
-    /* line-height:1.5em;  /* not much effect, probably I didn't use reset.css */
-    /* background:#465c8f url(../image/bg-image.jpg) repeat-x; */
-    background:#e9f0f5;
-    max-width:960px;
-    overflow:auto;
-    margin:auto;
+  font-family: 'Lato', verdana, arial, sans-serif;
+  background: #e9f0f5;
+  max-width: 1325px;
+  overflow: auto;
+  margin: auto;
+  /* line-height:1.5em;  /* not much effect, probably I didn't use reset.css */
+  /* background:#465c8f url(../image/bg-image.jpg) repeat-x; */
 }
 
+/* line 13, ../sass/style.scss */
 h1, h2, h3, h4, h5, h6 {
-    margin:0;
-    padding:0;
-    border:0;
-    /* font-size:100%;
-       font:inherit; */
-    vertical-align:baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* font-size:100%;
+     font:inherit; */
+  vertical-align: baseline;
 }
 
+/* line 22, ../sass/style.scss */
 .clearfix {
-    clear:both;
+  clear: both;
 }
 
 /* bootstrap extra */
-
-.panel-primary, .panel-danger, .panel-heading {
-    border-color:transparent;
-    -webkit-border-radius:25px;
-    -moz-border-radius:25px;
-    border-radius:10px;
-    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
+/* line 28, ../sass/style.scss */
+.panel-primary, .panel-danger, .panel-heading, .panel-body, .panel-info, .panel-warning {
+  border-color: transparent;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
 }
 
+/* line 36, ../sass/style.scss */
 .panel-heading {
-    margin-top:-1px;
-    margin-right:-1px;
-    margin-left:-1px;
+  margin-top: -1px;
+  margin-right: -1px;
+  margin-left: -1px;
 }
 
 /* anchor */
- .acor {
-    text-decoration:none;
- }
+/* line 43, ../sass/style.scss */
+.acor {
+  text-decoration: none;
+}
 
-/* colors */
-.blue {
-    color:blue;
+/* colors and fonts */
+/* line 48, ../sass/style.scss */
+.block-text {
+  color: black;
+  font-size: 16px;
 }
-.gold {
-    color:gold;
+
+/* line 52, ../sass/style.scss */
+.light-yang-color {
+  color: lightblue;
 }
-.lightblue {
-    color:lightblue;
+
+/* line 55, ../sass/style.scss */
+.light-yin-color {
+  color: pink;
 }
-.patc { /* pattern code */
-    color:grey;
+
+/* line 58, ../sass/style.scss */
+.patc {
+  /* pattern code */
+  color: grey;
 }
-.pink {
-    color:pink;
+
+/* line 61, ../sass/style.scss */
+.primary-text {
+  color: black;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: left;
 }
-.red { /* bearish */
-    color:red;
+
+/* line 67, ../sass/style.scss */
+.primary-larger-text {
+  color: black;
+  font-size: 14px;
+  font-weight: normal;
 }
-.steelblue {
-    color:steelblue;
+
+/* line 72, ../sass/style.scss */
+.route-menu {
+  color: black;
+  font-size: 13px;
 }
-.txtcolor {
-    color:#000;
+
+/* line 76, ../sass/style.scss */
+.small-note {
+  color: black;
+  font-size: 11px;
+}
+
+/* line 80, ../sass/style.scss */
+.yang-color {
+  color: blue;
+}
+
+/* line 83, ../sass/style.scss */
+.yin-color {
+  color: red;
 }
 
 /* cursor */
+/* line 88, ../sass/style.scss */
 .cursor-dn {
-    cursor:s-resize;
-}
-.cursor-on {
-    cursor:default;
-}
-.cursor-up {
-    cursor:n-resize;
+  cursor: s-resize;
 }
 
-/* fonts */
-.fs10 {
-    font-size:10px;
+/* line 91, ../sass/style.scss */
+.cursor-on {
+  cursor: default;
 }
-.fs11 {
-    font-size:11px;
-}
-.fs12 {
-    font-size:12px;
-}
-.fs13 {
-    font-size:13px;
-}
-.fs14 {
-    font-size:14px;
-}
-.fs15 {
-    font-size:15px;
-}
-.fs16 {
-    font-size:16px;
-}
-.fs18 {
-    font-size:18px;
-}
-.fsno {
-    font-style:normal;
-}
-.fwno {
-    font-weight:normal;
-}
-.fsmeta {
-    font-size:14px;
-    font-family:arial;
+
+/* line 94, ../sass/style.scss */
+.cursor-up {
+  cursor: n-resize;
 }
 
 /* table */
+/* line 99, ../sass/style.scss */
 .borderless tr td {
-    border:none !important;
-    padding:0px !important;
-}
-
-/* text */
-.txce {
-    text-align:center;
-}
-.txle {
-    text-align:left;
-}
-.txno {
-    text-decoration:none;
-}
-.txun {
-    text-decoration:underline;
+  border: none !important;
+  padding: 0px !important;
 }
 
 /* yt classes */
-.yt-yang-door-border {
-    border:lightblue solid 2px;
+/* line 105, ../sass/style.scss */
+.yt-metaphore {
+  font-size: 14px;
+  font-family: arial;
 }
-.yt-yin-door-border {
-    border:pink solid 2px;
-}
+
+/* line 109, ../sass/style.scss */
 .yt-panel {
-    margin-right:-1px;
-    margin-left:-1px;
+  margin-right: -1px;
+  margin-left: -1px;
 }
+
+/* line 113, ../sass/style.scss */
 .yt-section-main {
-    margin:20px auto;
+  margin: 20px auto;
 }
+
+/* line 116, ../sass/style.scss */
 .yt-section-sub {
-    margin:10px auto;
+  margin: 10px auto;
 }
+
+/* line 119, ../sass/style.scss */
 .yt-text-shadow {
-    text-shadow:1px 1px 0px rgba(255,255,255,.25), inset 1px 1px 0px rgba(0,0,0,.15);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* line 122, ../sass/style.scss */
+.yt-yang-door-border {
+  border: lightblue solid 2px;
+}
+
+/* line 125, ../sass/style.scss */
+.yt-yang-panel-header {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 130, ../sass/style.scss */
+.yt-yin-panel-header {
+  color: lightred;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 135, ../sass/style.scss */
+.yt-yin-door-border {
+  border: pink solid 2px;
 }
 
 /* yt extra */
+/* line 140, ../sass/style.scss */
 div.panel {
-    transition:all 0.2s;
-    transition-delay:0.5s;
+  transition: all 0.2s;
+  transition-delay: 0.4s;
 }
 
-div.panel:hover {
-    background:#ffffee;
+/* line 144, ../sass/style.scss */
+div.panel-danger:hover {
+  background: #ffcccc;
+}
+
+/* line 147, ../sass/style.scss */
+div.panel-primary:hover {
+  background: #bbffdd;
+}
+
+/* line 150, ../sass/style.scss */
+div.panel-info:hover, div.panel-warning:hover {
+  background: #ffffee;
 }

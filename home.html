@@ -1,8 +1,8 @@
 ﻿<div ng-controller='App1'>
     <div ng-cloak ng-hide='portf.error'>
-        <div class='col-sm-12'><span class='fs16 txtcolor'>Tickers listed in descending order according to the begin-date:</span></div>
+        <div class='col-sm-12'><span class='block-text'>Tickers listed in descending order according to the begin-date:</span></div>
         <!-- countries list -->
-        <div class='col-sm-12 fs12 txtcolor'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
+        <div class='col-sm-12 primary-text'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
             <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
@@ -11,7 +11,7 @@
                     ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
                     ng-click='selectSP1(clicklist, yang, $index + 1)'
                     title='{{ticker.tick.titl}}'
-                    class='btn btn-info fs14 yt-text-shadow'>
+                    class='btn btn-info primary-larger-text yt-text-shadow'>
                     {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
                 </span>
             </div>
@@ -23,7 +23,7 @@
                     ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
                     ng-click='selectSP1(clicklist, yin, $index + 1)'
                     title='{{ticker.tick.titl}}'
-                    class='btn btn-warning fs14 yt-text-shadow'>
+                    class='btn btn-warning primary-larger-text yt-text-shadow'>
                     {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
                 </span>
             </div>
@@ -32,15 +32,15 @@
 
     <div ng-show='portf.tickers1'>
         <div class='col-sm-12'><br>
-            <span class='fs16 txtcolor'>Weekly processed:</span><br>
+            <span class='block-text'>Weekly processed:</span><br>
         </div>
         <!-- left yang side -->
         <div id='app1pos' class="col-sm-6">
             <div class='panel panel-primary yt-panel'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title txce fs18'>PUC</h3>
+                    <h3 class='panel-title yt-yang-panel-header'>PUC</h3>
                 </div>
-                <div class='panel-body fs14'>
+                <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
                     <div class='btn-group yt-section-sub'>
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
@@ -51,9 +51,9 @@
                             <div class='panel-heading'>
                                 <h4 class='panel-title'>
                                     <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span>
-                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
-                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span> -->
-                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a>
+                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
+                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right route-menu'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span> -->
+                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right route-menu'>Archive</a>
                                 </h4>
                             </div>
                             <div class='panel-body'
@@ -61,11 +61,11 @@
                                  ng-click='getQuote(ticker.tick.name)'>
                                 <section>
                                     Quote: <button class='cursor-on btn btn-info yt-text-shadow'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
+                                    <span class='small-note'>*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>
                                     <h4>{{ticker.door.dat1}} Metaphore:</h4>
-                                    <div class='fsmeta'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
+                                    <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
                                 <section class='yt-section-sub'>
                                     <h5>The Potential Average Pattern Top:</h5>
@@ -97,9 +97,9 @@
         <div id='app1neg' class="col-sm-6">
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title txce fs18'>PDC</h3>
+                    <h3 class='panel-title yt-yin-panel-header'>PDC</h3>
                 </div>
-                <div class='panel-body fs14'>
+                <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
                     <div class='btn-group yt-section-sub'>
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
@@ -110,9 +110,9 @@
                             <div class='panel-heading'>
                                 <h4 class='panel-title'>
                                     <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}</span>
-                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right fs13'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
-                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right fs13'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span>  -->
-                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right fs13'>Archive</a>
+                                    <a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span>
+                                    <!-- <a ng-href='#/chart/{{ticker.tick.name}}' class='pull-right route-menu'>Chart</a><span class='pull-right'>&nbsp;&nbsp;</span>  -->
+                                    <a ng-href='#/archive/{{ticker.tick.name}}' class='pull-right route-menu'>Archive</a>
                                 </h4>
                             </div>
                             <div class='panel-body'
@@ -120,11 +120,11 @@
                                  ng-click='getQuote(ticker.tick.name)'>
                                 <section>
                                     Quote: <button class='cursor-on btn btn-warning yt-text-shadow'>&nbsp;&nbsp;{{lastTradePriceOnly}}&nbsp;&nbsp;{{lastTradeTime}}&nbsp;&nbsp;{{lastTradeDate}}</button><br>
-                                    <span class="fs11">*Just move or click the cursor around here to get the quote updated.</span>
+                                    <span class='small-note'>*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>
                                     <h4>{{ticker.door.dat1}} Metaphore:</h4>
-                                    <div class='fsmeta'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
+                                    <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
                                 <section class='yt-section-sub'>
                                     <h5>The Potential Average Pattern Bottom:</h5>

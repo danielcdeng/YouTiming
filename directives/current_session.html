@@ -1,28 +1,28 @@
 <div ng-if="t=='yang'">
     <table class='table'>
         <tr>
-            <th>Begin <span class='fs12 fwno'></span></th>
-            <th>Lowest <span class='fs12 fwno'>(interim)</span></th>
-            <th>Highest <span class='fs12 fwno'></span></th>
+            <th>Begin <span class='primary-text'></span></th>
+            <th>Lowest <span class='small-note'>(interim)</span></th>
+            <th>Highest <span class='primary-text'></span></th>
         </tr>
         <tr>
-            <td>{{s.door.pri1}}, {{s.door.dat1}}</td>
-            <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='pink'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
-            <td><span ng-if="s.sess.netp">+{{s.sess.netp}},</span> <span class='blue'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
+            <td><span class='yang-color'>{{s.door.pri1}}</span>, {{s.door.dat1}}</td>
+            <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='light-yin-color'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
+            <td><span ng-if="s.sess.netp">+{{s.sess.netp}},</span> <span class='yang-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>
 <div ng-if="t=='yin'">
     <table class='table'>
         <tr>
-            <th>Begin <span class='fs12 fwno'></span></th>
-            <th>Highest <span class='fs12 fwno'>(interim)</span></th>
-            <th>Lowest <span class='fs12 fwno'></span></th>
+            <th>Begin <span class='primary-text'></span></th>
+            <th>Highest <span class='small-note'>(interim)</span></th>
+            <th>Lowest <span class='primary-text'></span></th>
         </tr>
         <tr>
-            <td>{{s.door.pri1}}, {{s.door.dat1}}</td>
-            <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='lightblue'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
-            <td><span ng-if="s.sess.netp">{{s.sess.netp}},</span> <span class='red'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
+            <td><span class='yin-color'>{{s.door.pri1}}</span>, {{s.door.dat1}}</td>
+            <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='light-yang-color'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
+            <td><span ng-if="s.sess.netp">{{s.sess.netp}},</span> <span class='yin-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>
