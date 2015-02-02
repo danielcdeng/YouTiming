@@ -1,4 +1,4 @@
-<div ng-controller='Trace'>
+<div ng-controller='Trace' class='basic-container'>
     <div ng-hide='trace.error' class='col-sm-12'>
         <div ng-if='trace.yang_doors > 0'
              class='col-sm-6 btn-group yt-section-sub yt-text-shadow'>
@@ -29,13 +29,12 @@
                         <!-- button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button -->
                         <button type='button' class='btn btn-default' ng-repeat='ticker in trace.tickers | tracePageCount:yang:pageSize:trace.fore' ng-click='selectTracePage(clickpage, yang, $index + 1)' ng-class='getTracePageClass(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse |
-                        range:yang:yangTraceSP:pageSize'>
+                    <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | range:yang:yangTraceSP:pageSize' class='yt-section-sub'>
                         <div class='panel panel-info'>
-                            <div class='panel-heading yt-section-sub'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
                             <div class='panel-body'>
                                 <section>
-                                    <h4>Metaphore, Trace, {{ticker.door.dat1}}:</h4>
+                                    <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
                                 <section>
@@ -57,13 +56,12 @@
                         <!-- button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button -->
                         <button type='button' class='btn btn-default' ng-repeat='ticker in trace.tickers | tracePageCount:yang:pageSize:trace.fore' ng-click='selectTracePage(clickpage, yin, $index + 1)' ng-class='getTracePageClass(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | 
-                        range:yin:yinTraceSP:pageSize'>
+                    <div ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | range:yin:yinTraceSP:pageSize' class='yt-section-sub'>
                         <div class='panel panel-warning'>
-                            <div class='panel-heading yt-section-sub'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
                             <div class='panel-body'>
                                 <section>
-                                    <h4>Metaphore, Trace, {{ticker.door.dat1}}:</h4>
+                                    <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
                                 <section>

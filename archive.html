@@ -1,4 +1,4 @@
-<div ng-controller='App2'>
+<div ng-controller='App2' class='basic-container'>
     <div ng-hide='portf.error'>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
@@ -35,12 +35,12 @@
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-sub'>
                         <div class='panel panel-info'>
-                            <div class='panel-heading yt-section-sub'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
                                 <section>
-                                    <h4>Metaphore, Archive, {{ticker.door.dat1}}:</h4>
+                                    <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
                                 <section>
@@ -65,12 +65,12 @@
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yin:pageSize' ng-click='selectSP22(clickpage, yin, $index + 1)' ng-class='getSP2Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-sub'>
                         <div class='panel panel-warning'>
-                            <div class='panel-heading yt-section-sub'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
                                 <section>
-                                    <h4>Metaphore, Archive, {{ticker.door.dat1}}:</h4>
+                                    <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
                                     <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                 </section><br>
                                 <section>

@@ -1,18 +1,18 @@
 <div ng-if="t=='yang'">
 	<ul>
-	    <li>Normal sessions count: {{s.stat.open_pos.cout}}</li>
-	    <li>Accumulated +Net%: +{{s.stat.open_pos.totf}}%</li>
-	    <li>Average top derived: <span ng-if='s.stat.open_pos.cout > 0' class='yang-color'>{{ r({f:s.door.pri1*(1+(s.stat.open_pos.totf/s.stat.open_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if='s.stat.open_pos.cout == 0'>n/a</span></li>
-	    <li><span class='light-yin-color'>Sessions without the Highest: {{s.stat.open_neg.cout}}</span></li>
-	    <li><span class='light-yin-color'>Total &minus;Net%: {{s.stat.open_neg.totf}}%</span></li>
+	    <li>Normal sessions count: {{s.stat.yang_pos.cout}}</li>
+	    <li>Accumulated +Net%: +{{s.stat.yang_pos.totf}}%</li>
+	    <li>Average top derived: <span ng-if='s.stat.yang_pos.cout > 0' class='yang-color'>{{ r({f:s.door.pri1*(1+(s.stat.yang_pos.totf/s.stat.yang_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if='s.stat.yang_pos.cout == 0'>n/a</span></li>
+	    <li><span class='light-yin-color'>Sessions without the Highest: {{s.stat.yang_neg.cout}}</span></li>
+	    <li><span class='light-yin-color'>Total &minus;Net%: {{s.stat.yang_neg.totf}}%</span></li>
 	</ul>
 </div>
 <div ng-if="t=='yin'">
     <ul>
-        <li>Normal sessions count: {{s.stat.close_pos.cout}}</li>
-        <li>Accumulated &minus;Net%: <span ng-if='s.stat.close_pos.cout > 0'>{{ r({f:(1/(((s.stat.close_pos.totf/s.stat.close_pos.cout)/100)+1)-1)*100*s.stat.close_pos.cout, p:2}).toFixed(1) }}%</span><span ng-if='s.stat.close_pos.cout == 0'>0.0%</span></li>
-        <li>Average bottom derived: <span ng-if='s.stat.close_pos.cout > 0' class='yin-color'>{{ r({f:s.door.pri1/(1+(s.stat.close_pos.totf/s.stat.close_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if='s.stat.close_pos.cout == 0'>n/a</span></li>
-        <li><span class="light-yang-color">Sessions without the Lowest: {{s.stat.close_neg.cout}}</span></li>
-        <li><span class="light-yang-color">Total +Net%: <span ng-if='s.stat.close_neg.cout > 0'>+{{ r({f:(1/(((s.stat.close_neg.totf/s.stat.close_neg.cout)/100)+1)-1)*100*s.stat.close_neg.cout, p:2}).toFixed(1) }}%</span><span ng-if='s.stat.close_neg.cout == 0'>0.0%</span></span></li>
+        <li>Normal sessions count: {{s.stat.yin_pos.cout}}</li>
+        <li>Accumulated &minus;Net%: <span ng-if='s.stat.yin_pos.cout > 0'>{{ r({f:(1/(((s.stat.yin_pos.totf/s.stat.yin_pos.cout)/100)+1)-1)*100*s.stat.yin_pos.cout, p:2}).toFixed(1) }}%</span><span ng-if='s.stat.yin_pos.cout == 0'>0.0%</span></li>
+        <li>Average bottom derived: <span ng-if='s.stat.yin_pos.cout > 0' class='yin-color'>{{ r({f:s.door.pri1/(1+(s.stat.yin_pos.totf/s.stat.yin_pos.cout)/100), p:2}).toFixed(2) }}</span><span ng-if='s.stat.yin_pos.cout == 0'>n/a</span></li>
+        <li><span class="light-yang-color">Sessions without the Lowest: {{s.stat.yin_neg.cout}}</span></li>
+        <li><span class="light-yang-color">Total +Net%: <span ng-if='s.stat.yin_neg.cout > 0'>+{{ r({f:(1/(((s.stat.yin_neg.totf/s.stat.yin_neg.cout)/100)+1)-1)*100*s.stat.yin_neg.cout, p:2}).toFixed(1) }}%</span><span ng-if='s.stat.yin_neg.cout == 0'>0.0%</span></span></li>
     </ul>
 </div>

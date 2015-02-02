@@ -5,7 +5,7 @@
 body {
   font-family: 'Lato', verdana, arial, sans-serif;
   background: #e9f0f5;
-  max-width: 1325px;
+  max-width: 1350px;
   overflow: auto;
   margin: auto;
   /* line-height:1.5em;  /* not much effect, probably I didn't use reset.css */
@@ -23,12 +23,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* line 22, ../sass/style.scss */
+#about-container, #contact-container {
+  width: 96%;
+  margin: 20px auto 20px auto;
+}
+
+/* line 27, ../sass/style.scss */
+#about-container li {
+  margin: 10px auto 10px auto;
+}
+
+/* line 31, ../sass/style.scss */
+.basic-container {
+  width: 96%;
+  margin: 0px auto 0px auto;
+}
+
+/* line 36, ../sass/style.scss */
 .clearfix {
   clear: both;
 }
 
+/* line 40, ../sass/style.scss */
+.verse-container {
+  /* -webkit-padding-start:$double-margin; */
+}
+
 /* bootstrap extra */
-/* line 28, ../sass/style.scss */
+/* line 46, ../sass/style.scss */
 .panel-primary, .panel-danger, .panel-heading, .panel-body, .panel-info, .panel-warning {
   border-color: transparent;
   -webkit-border-radius: 10px;
@@ -37,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
 }
 
-/* line 36, ../sass/style.scss */
+/* line 54, ../sass/style.scss */
 .panel-heading {
   margin-top: -1px;
   margin-right: -1px;
@@ -45,35 +67,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* anchor */
-/* line 43, ../sass/style.scss */
+/* line 61, ../sass/style.scss */
 .acor {
   text-decoration: none;
 }
 
 /* colors and fonts */
-/* line 48, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
 .block-text {
   color: black;
   font-size: 16px;
 }
 
-/* line 52, ../sass/style.scss */
+/* line 70, ../sass/style.scss */
 .light-yang-color {
   color: lightblue;
 }
 
-/* line 55, ../sass/style.scss */
+/* line 73, ../sass/style.scss */
 .light-yin-color {
   color: pink;
 }
 
-/* line 58, ../sass/style.scss */
+/* line 76, ../sass/style.scss */
 .patc {
   /* pattern code */
   color: grey;
 }
 
-/* line 61, ../sass/style.scss */
+/* line 79, ../sass/style.scss */
+.primary-button-text {
+  color: white;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* line 84, ../sass/style.scss */
 .primary-text {
   color: black;
   font-size: 12px;
@@ -81,128 +110,129 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-/* line 67, ../sass/style.scss */
+/* line 90, ../sass/style.scss */
 .primary-larger-text {
   color: black;
   font-size: 14px;
   font-weight: normal;
 }
 
-/* line 72, ../sass/style.scss */
+/* line 95, ../sass/style.scss */
 .route-menu {
   color: black;
   font-size: 13px;
 }
 
-/* line 76, ../sass/style.scss */
+/* line 99, ../sass/style.scss */
 .small-note {
   color: black;
   font-size: 11px;
 }
 
-/* line 80, ../sass/style.scss */
+/* line 103, ../sass/style.scss */
 .yang-color {
   color: blue;
 }
 
-/* line 83, ../sass/style.scss */
+/* line 106, ../sass/style.scss */
 .yin-color {
   color: red;
 }
 
 /* cursor */
-/* line 88, ../sass/style.scss */
+/* line 111, ../sass/style.scss */
 .cursor-dn {
   cursor: s-resize;
 }
 
-/* line 91, ../sass/style.scss */
+/* line 114, ../sass/style.scss */
 .cursor-on {
   cursor: default;
 }
 
-/* line 94, ../sass/style.scss */
+/* line 117, ../sass/style.scss */
 .cursor-up {
   cursor: n-resize;
 }
 
 /* table */
-/* line 99, ../sass/style.scss */
+/* line 122, ../sass/style.scss */
 .borderless tr td {
   border: none !important;
   padding: 0px !important;
 }
 
 /* yt classes */
-/* line 105, ../sass/style.scss */
+/* line 128, ../sass/style.scss */
 .yt-metaphore {
   font-size: 14px;
   font-family: arial;
 }
 
-/* line 109, ../sass/style.scss */
+/* line 132, ../sass/style.scss */
 .yt-panel {
   margin-right: -1px;
   margin-left: -1px;
 }
 
-/* line 113, ../sass/style.scss */
+/* line 136, ../sass/style.scss */
 .yt-section-main {
   margin: 20px auto;
 }
 
-/* line 116, ../sass/style.scss */
+/* line 139, ../sass/style.scss */
 .yt-section-sub {
   margin: 10px auto;
 }
 
-/* line 119, ../sass/style.scss */
+/* line 142, ../sass/style.scss */
 .yt-text-shadow {
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
 }
 
-/* line 122, ../sass/style.scss */
+/* line 145, ../sass/style.scss */
 .yt-yang-door-border {
   border: lightblue solid 2px;
 }
 
-/* line 125, ../sass/style.scss */
+/* line 148, ../sass/style.scss */
 .yt-yang-panel-header {
   color: white;
   font-size: 18px;
   text-align: center;
 }
 
-/* line 130, ../sass/style.scss */
+/* line 153, ../sass/style.scss */
 .yt-yin-panel-header {
   color: lightred;
   font-size: 18px;
   text-align: center;
 }
 
-/* line 135, ../sass/style.scss */
+/* line 158, ../sass/style.scss */
 .yt-yin-door-border {
   border: pink solid 2px;
+  color: lightred !important;
 }
 
 /* yt extra */
-/* line 140, ../sass/style.scss */
+/* line 164, ../sass/style.scss */
 div.panel {
   transition: all 0.2s;
   transition-delay: 0.4s;
 }
 
-/* line 144, ../sass/style.scss */
+/* line 168, ../sass/style.scss */
 div.panel-danger:hover {
   background: #ffcccc;
 }
 
-/* line 147, ../sass/style.scss */
+/* line 171, ../sass/style.scss */
 div.panel-primary:hover {
   background: #bbffdd;
 }
 
-/* line 150, ../sass/style.scss */
+/* line 174, ../sass/style.scss */
 div.panel-info:hover, div.panel-warning:hover {
   background: #ffffee;
 }

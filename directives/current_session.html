@@ -8,7 +8,7 @@
         <tr>
             <td><span class='yang-color'>{{s.door.pri1}}</span>, {{s.door.dat1}}</td>
             <td>{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='light-yin-color'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
-            <td><span ng-if="s.sess.netp">+{{s.sess.netp}},</span> <span class='yang-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
+            <td><span ng-if='s.sess.netp!="n/a"'>+</span>{{s.sess.netp}}<span ng-if='s.sess.netp!="n/a"'>%</span>, <span class='yang-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>
@@ -22,7 +22,7 @@
         <tr>
             <td><span class='yin-color'>{{s.door.pri1}}</span>, {{s.door.dat1}}</td>
             <td>+{{ (100*(ctf({vs:s.sess.pr25}) - ctf({vs:s.door.pri1}))/ctf({vs:s.door.pri1})).toFixed(1) }}%, <span class='light-yang-color'>{{s.sess.pr25}}</span>, {{s.sess.da25}}</td>
-            <td><span ng-if="s.sess.netp">{{s.sess.netp}},</span> <span class='yin-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
+            <td>{{s.sess.netp}}<span ng-if='s.sess.netp!="n/a"'>%</span>, <span class='yin-color'>{{s.sess.pri2}}</span>, {{s.sess.dat2}}</td>
         </tr>
     </table>
 </div>

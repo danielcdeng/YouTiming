@@ -44,11 +44,9 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
                 //
                 switch($scope.portf.tickers1[i].door.type) {
                     case yang:
-                        if(pri2) $scope.portf.tickers1[i].sess.netp = (100*(pri2-pri1)/pri1).toFixed(1) + '%';
                         ++$scope.yang_doors1;
                         break;
                     case yin:
-                        if(pri2) $scope.portf.tickers1[i].sess.netp = (100*(pri2-pri1)/pri1).toFixed(1) + '%';
                         ++$scope.yin_doors1;
                         break;
                     default: alert("Error: unknwon door type"); break;
@@ -65,11 +63,10 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
 // This controller is used in app1.html which is the main view of index.html.
 // Duty: when the index.html firstly gets loaded, this guy doesn't do anything;
 //       it is mainly responsible for pagination if ther user clicks.
-YouTiming.controller('App1', ['$scope', 'pageScroll', 
-    'yang', 'yin', 'yangPageActiveClass', 'yinPageActiveClass',
-    'tickerPerPage', 'clicklist', 'clickpage', 'pageHash',  
-    function($scope, pageScroll, yang, yin, yangPageActiveClass, 
-        yinPageActiveClass, tickerPerPage, clicklist, clickpage, pageHash) {
+YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 
+    'yinPageActiveClass','tickerPerPage', 'clicklist', 'clickpage', 'pageHash', 'guidance', 'miss', 
+    function($scope, pageScroll, yang, yin, yangPageActiveClass, yinPageActiveClass, tickerPerPage, 
+        clicklist, clickpage, pageHash, guidance, miss) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -97,8 +94,8 @@ YouTiming.controller('App1', ['$scope', 'pageScroll',
         };
         //
         $scope.getColor = function(door) {
-            if(door == 'yang') return "blue";
-            else return "red";
+            if(door == 'yang') return "yang-color";
+            else return "yin-color";
         };
         //
         $scope.getSP1Class = function(type, page) {
@@ -144,17 +141,19 @@ YouTiming.controller('App1', ['$scope', 'pageScroll',
             }
             pageScroll.page(position);
         };
+        //
+        $scope.guidance = guidance;
+        $scope.miss = miss;
     }]
 );
 
 // This controller is used in archive.html.
 // Duty: to GET single ticker's historical JSON data.
-YouTiming.controller('App2', ['$scope', '$routeParams', 
-    'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 'yinPageActiveClass', 
-    'tickerPerPage', 'histdir', 'clicklist', 'clickpage', 'pageHash', 'getData', 
-    function($scope, $routeParams, pageScroll, yang, yin, 
-        yangPageActiveClass, yinPageActiveClass, tickerPerPage, histdir, 
-        clicklist, clickpage, pageHash, getData) {
+YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'yin', 
+    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'histdir', 'clicklist', 
+    'clickpage', 'pageHash', 'getData', 'guidance', 'miss', 
+    function($scope, $routeParams, pageScroll, yang, yin, yangPageActiveClass, yinPageActiveClass, 
+        tickerPerPage, histdir, clicklist, clickpage, pageHash, getData, guidance, miss) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -277,6 +276,9 @@ YouTiming.controller('App2', ['$scope', '$routeParams',
             if(!$scope.yinSP2) $scope.yinSP2 = 1;
             $scope.archive = true;
         }
+        //
+        $scope.guidance = guidance;
+        $scope.miss = miss;
     }]
 );
 
@@ -312,11 +314,11 @@ YouTiming.controller('StockREST', ['$scope', 'getData',
 // This controller is used in trace.html.
 // Duty: gather all the ones of the same forecast from the archive in the portfolio.
 YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScroll', 
-    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir', 
-    'portfname', 'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData', 
+    'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir', 'portfname', 
+    'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData', 'guidance', 'miss', 
     function($scope, $routeParams, yang, yin, pageScroll, yangPageActiveClass, 
         yinPageActiveClass, tickerPerPage, modeldir, portfname, histdir, arcfname, 
-        clicklist, clickpage, getData) {
+        clicklist, clickpage, getData, guidance, miss) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
@@ -368,6 +370,8 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScr
         $scope.trace.error = null;
         $scope.predicate = 'door.dat1';
         $scope.reverse = true;
+        $scope.guidance = guidance;
+        $scope.miss = miss;
         // 1. try to get the forecast code from the archive
         $scope.trace.fore = $routeParams.fore;
         $scope.trace.type = $routeParams.type;
@@ -381,7 +385,7 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScr
                 if($scope.trace.fore == tlist[i].door.fore &&
                     $scope.trace.type == tlist[i].door.type) {
                     // match the forecast code in the archive.json
-                    var x = tlist[i], netp = '';
+                    var x = tlist[i]; //, netp = '';
                     var pri1 = parseFloat(x.door.pri1);
                     var pri2 = parseFloat(x.sess.pri2);
                     switch(x.door.type) {
@@ -404,8 +408,8 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScr
                             break;
 
                     }
-                    if(pri2) netp = (100 * (pri2 - pri1) / pri1).toFixed(1) + '%';
-                    $scope.trace.tickers[idx].sess.netp = netp;
+                    //if(pri2) netp = (100 * (pri2 - pri1) / pri1).toFixed(1) + '%';
+                    //$scope.trace.tickers[idx].sess.netp = netp;
                     ++idx;
                 }
             }

@@ -1,29 +1,30 @@
-﻿<div ng-controller='App1'>
+﻿<div ng-controller='App1' class='basic-container'>
     <div ng-cloak ng-hide='portf.error'>
-        <div class='col-sm-12'><span class='block-text'>Tickers listed in descending order according to the begin-date:</span></div>
-        <!-- countries list -->
-        <div class='col-sm-12 primary-text'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</div>
+        <div class='col-sm-12'>
+            <section class='block-text'>Tickers listed in descending order according to the begin-date:</section>
+            <!-- countries list -->
+            <div class='primary-text'>*Regions (10): ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</span>
+        </div>
         <div class='col-sm-12 btn-group'>
             <!-- yang buttons -->
             <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
                 <span class='btn btn-info cursor-dn yt-yang-door-border'>Potential Upward Confirmation (PUC): {{yang_doors1}}</span><br>
-                <span
+                <div
                     ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
                     ng-click='selectSP1(clicklist, yang, $index + 1)'
                     title='{{ticker.tick.titl}}'
-                    class='btn btn-info primary-larger-text yt-text-shadow'>
+                    class='btn btn-info primary-button-text yt-text-shadow'>
                     {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
-                </span>
+                </div>
             </div>
             <!-- yin buttons -->
             <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
-                <span class='btn btn-warning cursor-dn yt-yin-door-border'>Potential Downward Confirmation (PDC): {{yin_doors1}}
-                </span></br>
+                <span class='btn btn-warning cursor-dn yt-yin-door-border'>Potential Downward Confirmation (PDC): {{yin_doors1}}</span></br>
                 <span
                     ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
                     ng-click='selectSP1(clicklist, yin, $index + 1)'
                     title='{{ticker.tick.titl}}'
-                    class='btn btn-warning primary-larger-text yt-text-shadow'>
+                    class='btn btn-warning primary-button-text yt-text-shadow'>
                     {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
                 </span>
             </div>
@@ -31,8 +32,10 @@
     </div>
 
     <div ng-show='portf.tickers1'>
-        <div class='col-sm-12'><br>
+        <div class='col-sm-12'>
+            <br>
             <span class='block-text'>Weekly processed:</span><br>
+            <span>2014-01-31 administrator note: Corrected/updated the switch board in the engine (Java).</span>
         </div>
         <!-- left yang side -->
         <div id='app1pos' class="col-sm-6">
@@ -64,7 +67,7 @@
                                     <span class='small-note'>*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>
-                                    <h4>{{ticker.door.dat1}} Metaphore:</h4>
+                                    <h4>{{ticker.door.dat1}} Verse:</h4>
                                     <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
                                 <section class='yt-section-sub'>
@@ -123,7 +126,7 @@
                                     <span class='small-note'>*Just move or click the cursor around here to get the quote updated.</span>
                                 </section>
                                 <section class='yt-section-main'>
-                                    <h4>{{ticker.door.dat1}} Metaphore:</h4>
+                                    <h4>{{ticker.door.dat1}} Verse:</h4>
                                     <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                 </section>
                                 <section class='yt-section-sub'>
