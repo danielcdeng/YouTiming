@@ -136,6 +136,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* yt classes */
 
+.yt-display-center {
+	display:block;
+	margin-left:auto !important;
+	margin-right:auto !important;
+	vertical-align:middle !important;
+}
 .yt-metaphore {
 	font-size:$primary-larger-text-font-size;
     font-family:arial;
