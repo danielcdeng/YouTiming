@@ -1,27 +1,38 @@
 <div ng-controller='Trace' class='basic-container'>
-    <div ng-hide='trace.error' class='col-sm-12'>
-        <div ng-if='trace.yang_doors > 0'
-             class='col-sm-6 btn-group yt-section-sub yt-text-shadow'>
+    <div ng-cloak ng-hide='trace.error' class='col-sm-12'>
+        <div ng-if='trace.yang_doors > 0' class='col-sm-6'>
             <!-- yang buttons -->
-            <!--span class='pull-left btn btn-info cursor-up'>{{yang|uppercase}}: {{trace.yang_doors}}</span -->
-            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang'
-                  ng-click='selectTracePage(clicklist, yang, $index + 1)'
-                  title='{{ticker.tick.titl}}'
-                  class='btn btn-info pull-left primary-larger-text'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <div class='yt-basic-highlight'>
+                <div class='yt-section-sub'>
+                    <div class='btn-group'>
+                        <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang'
+                              ng-click='selectTracePage(clicklist, yang, $index + 1)'
+                              title='{{ticker.tick.titl}}'
+                              class='btn btn-info pull-left primary-larger-text yt-text-shadow'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div ng-if='trace.yin_doors > 0' class='col-sm-6 btn-group yt-section-sub yt-text-shadow'>
+        <div ng-if='trace.yin_doors > 0' class='col-sm-6'>
             <!-- yin buttons -->
-            <!-- span class='pull-left btn btn-warning cursor-dn'>{{yin|uppercase}}: {{trace.yin_doors}}</span -->
-            <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' 
-                  ng-click='selectTracePage(clicklist, yin, $index + 1)' 
-                  title='{{ticker.tick.titl}}' 
-                  class='btn btn-warning pull-left primary-larger-text'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}</span>
+            <div class='yt-basic-highlight'>
+                <div class='yt-section-sub'>
+                    <div class='btn-group'>
+                        <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' 
+                              ng-click='selectTracePage(clicklist, yin, $index + 1)' 
+                              title='{{ticker.tick.titl}}' 
+                              class='btn btn-warning pull-left primary-larger-text yt-text-shadow'>{{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div ng-show='trace.tickers'>
+    <div ng-show='trace.tickers' class='col-sm-12'>
         <!-- left yang side -->
-        <div ng-if='trace.yang_doors > 0' id='tracepos' class='col-sm-6 yt-section-sub'>
+        <div ng-if='trace.yang_doors > 0' id='tracepos' class='col-sm-6 yt-section-main'>
             <div class='panel panel-primary'>
                 <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
@@ -33,14 +44,18 @@
                         <div class='panel panel-info'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
                             <div class='panel-body'>
-                                <section>
-                                    <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
-                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
-                                </section><br>
-                                <section>
-                                    <h4>Session:</h4>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
-                                </section>
+                                <div class='yt-yang-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
+                                        <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                    </section>
+                                </div>
+                                <div class='yt-yang-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Session:</h4>
+                                        <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +63,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div ng-if='trace.yin_doors > 0' id='traceneg' class='col-sm-6 yt-section-sub'>
+        <div ng-if='trace.yin_doors > 0' id='traceneg' class='col-sm-6 yt-section-main'>
             <div class='panel panel-danger'>
                 <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
@@ -60,14 +75,18 @@
                         <div class='panel panel-warning'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span></h4></div>
                             <div class='panel-body'>
-                                <section>
-                                    <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
-                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
-                                </section><br>
-                                <section>
-                                    <h4>Session:</h4>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
-                                </section>
+                                <div class='yt-yin-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
+                                        <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                    </section>
+                                </div>
+                                <div class='yt-yin-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Session:</h4>
+                                        <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,23 +1,29 @@
 <div ng-controller='App2' class='basic-container'>
-    <div ng-hide='portf.error'>
-        <div class='col-sm-12 btn-group'>
-            <!-- yang buttons -->
-            <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
-                <span
-                    ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yang'
-                    ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)'
-                    title='{{ticker.tick.titl}}'
-                    class='btn btn-info primary-larger-text yt-text-shadow'>{{ticker.door.dat1}}
-                </span>
+    <div ng-cloak ng-hide='portf.error' class='col-sm-12'>
+        <!-- yang buttons -->
+        <div class='col-sm-6'>
+            <div class='yt-basic-highlight'>
+                <div class='yt-section-sub'>
+                    <div class='btn-group'>
+                        <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yang'
+                            ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}'
+                            class='btn btn-info primary-larger-text yt-text-shadow'>{{ticker.door.dat1}}
+                        </span>
+                    </div>
+                </div>
             </div>
-            <!-- yin buttons -->
-            <div ng-cloak class='yt-section-sub yt-text-shadow col-sm-6'>
-                <span
-                    ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yin'
-                    ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)'
-                    title='{{ticker.tick.titl}}'
-                    class='btn btn-warning primary-larger-text yt-text-shadow'>{{ticker.door.dat1}}
-                </span>
+        </div>
+        <!-- yin buttons -->
+        <div class='col-sm-6'>
+            <div class='yt-basic-highlight'>
+                <div class='yt-section-sub'>
+                    <div class='btn-group'>
+                        <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yin'
+                            ng-click='selectSP21(clicklist, ticker.door.type, $index + 1)' title='{{ticker.tick.titl}}'
+                            class='btn btn-warning primary-larger-text yt-text-shadow'>{{ticker.door.dat1}}
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -35,18 +41,22 @@
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yang:pageSize' ng-click='selectSP22(clickpage, yang, $index + 1)' ng-class='getSP2Class(yang, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-sub'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-main'>
                         <div class='panel panel-info'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
-                                <section>
-                                    <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
-                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
-                                </section><br>
-                                <section>
-                                    <h4>Session:</h4>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
-                                </section>
+                                <div class='yt-yang-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
+                                        <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                    </section>
+                                </div>
+                                <div class='yt-yang-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Session:</h4>
+                                        <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,18 +75,22 @@
                         <button type='button' class='btn btn-default' ng-click='pageScroll.page("app0top")'>Top</button>
                         <button type='button' class='btn btn-default' ng-repeat='ticker in portf.tickers2 | pageCount:yin:pageSize' ng-click='selectSP22(clickpage, yin, $index + 1)' ng-class='getSP2Class(yin, $index + 1)'>{{$index + 1}}</button>
                     </div>
-                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-sub'>
+                    <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-main'>
                         <div class='panel panel-warning'>
                             <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
                             <div class='panel-body'>
-                                <section>
-                                    <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
-                                    <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
-                                </section><br>
-                                <section>
-                                    <h4>Session:</h4>
-                                    <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
-                                </section>
+                                <div class='yt-yin-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
+                                        <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
+                                    </section>
+                                </div>
+                                <div class='yt-yin-highlight'>
+                                    <section class='yt-section-sub'>
+                                        <h4>Session:</h4>
+                                        <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
+                                    </section>
+                                </div>
                             </div>
                         </div>
                     </div>

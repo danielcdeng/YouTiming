@@ -301,11 +301,6 @@ YouTiming.controller('StockREST', ['$scope', 'getData',
         //
         var getNews = function(symbol) {
             // Need to resolve CORS issue before using x2js library:
-            /*
-            var api = getData.getNews(symbol);
-            var data = api.get({}, function() {
-            });
-            */
         };
         getNews($scope.ticker.tick.name);
     }]
