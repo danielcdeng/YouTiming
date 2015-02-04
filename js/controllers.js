@@ -22,6 +22,29 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
         if(!$scope.yinSP1) {
             $scope.yinSP1 = 1;
         }
+        // Utility functions:
+        $scope.abs = function(fval) {
+            return Math.abs(fval);
+        };
+        $scope.average = function(f1, f2) {
+            if(f1 == "n/a") f1 = 0;
+            if(f2 == "n/a") f2 = 0;
+            var v1 = parseFloat(f1), v2 = parseFloat(f2);
+            if(v1 == 0) return v2;
+            if(v2 == 0) return v1;
+            return (v1 + v2) / 2;
+        };
+        $scope.convertToFloat = function(vs) {
+            return parseFloat(vs);
+        };
+        $scope.getColor = function(door) {
+            if(door == 'yang') return "yang-color";
+            else return "yin-color";
+        };
+        $scope.roundup = function(fval, iprecision) {
+            return Math.round(parseFloat(fval) * Math.pow(10, iprecision)) / Math.pow(10, iprecision);
+        };
+        //
     	// portfolio--do this for TList controller
     	//$http.get(modeldir + portfname)
         getData.getJSON(modeldir + portfname)
@@ -76,28 +99,6 @@ YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
         cpage = pageHash.get('App1', yin, yang);
         if(cpage !== undefined) $scope.yinSP1 = cpage;
         //
-        $scope.abs = function(fval) {
-            return Math.abs(fval);
-        };
-        //
-        $scope.average = function(f1, f2) {
-            if(f1 == "n/a") f1 = 0;
-            if(f2 == "n/a") f2 = 0;
-            var v1 = parseFloat(f1), v2 = parseFloat(f2);
-            if(v1 == 0) return v2;
-            if(v2 == 0) return v1;
-            return (v1 + v2) / 2;
-        };
-        //
-        $scope.convertToFloat = function(vs) {
-            return parseFloat(vs);
-        };
-        //
-        $scope.getColor = function(door) {
-            if(door == 'yang') return "yang-color";
-            else return "yin-color";
-        };
-        //
         $scope.getSP1Class = function(type, page) {
             switch(type) {
                 case yang:
@@ -109,10 +110,6 @@ YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
         };
         //
         $scope.pageScroll = pageScroll;
-        //
-        $scope.roundup = function(fval, iprecision) {
-            return Math.round(parseFloat(fval) * Math.pow(10, iprecision)) / Math.pow(10, iprecision);
-        };
         //
         $scope.selectSP1 = function(from, type, index) {
             var page = 0;
@@ -162,10 +159,6 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
         if(cpage !== undefined) $scope.yangSP2 = cpage;
         cpage = pageHash.get('App2', yin, yang);
         if(cpage !== undefined) $scope.yinSP2 = cpage;
-        //
-        $scope.convertToFloat = function(vs) {
-            return parseFloat(vs);
-        };
         //
         $scope.getSP2Class = function(type, page) {
             switch(type) {
@@ -317,10 +310,6 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScr
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
-        //
-        $scope.convertToFloat = function(vs) {
-            return parseFloat(vs);
-        };
         //
         $scope.getTracePageClass = function(type, page) {
             switch(type) {
