@@ -1,11 +1,10 @@
 ﻿// This is the init controller used in index.html whose
-// main view is app1.html. This guy only gets executed once.
+// main view is home.html. This guy only gets executed once.
 // Duty: GET active.json (portfolio).
 // Code: 0 - init app, 1 - portfolio app, 2 - archive app
 YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir', 
     'weekfname', 'portfname', 'tickerPerPage', 'getData', 
-    function($scope, yang, yin, modeldir, weekfname, portfname,
-        tickerPerPage, getData) {
+    function($scope, yang, yin, modeldir, weekfname, portfname, tickerPerPage, getData) {
         //
     	$scope.weekly = {};
         $scope.portf = {};
@@ -17,7 +16,7 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
         $scope.pageSize = tickerPerPage;
         //
         if(!$scope.yangSP1) {
-            $scope.yangSP1 = 1; // user selected page on app1.html view
+            $scope.yangSP1 = 1; // user selected page on home.html view
         }
         if(!$scope.yinSP1) {
             $scope.yinSP1 = 1;
@@ -83,20 +82,21 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
     }]
 );
 
-// This controller is used in app1.html which is the main view of index.html.
+// This controller is used in home.html which is the main view of index.html.
 // Duty: when the index.html firstly gets loaded, this guy doesn't do anything;
 //       it is mainly responsible for pagination if ther user clicks.
-YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 
-    'yinPageActiveClass','tickerPerPage', 'clicklist', 'clickpage', 'pageHash', 'guidance', 'miss', 
+YouTiming.controller('Home', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 
+    'yinPageActiveClass','tickerPerPage', 'clicklist', 'clickpage', 'pageHash', 'guidance', 'miss',
+    'home_pos', 'home_neg',  
     function($scope, pageScroll, yang, yin, yangPageActiveClass, yinPageActiveClass, tickerPerPage, 
-        clicklist, clickpage, pageHash, guidance, miss) {
+        clicklist, clickpage, pageHash, guidance, miss, home_pos, home_neg) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
         // restore the previously clicked page # from the service singleton
-        var cpage = pageHash.get('App1', yang, yang);  // the 3rd par is passed and used as a constant
+        var cpage = pageHash.get('Home', yang, yang);  // the 3rd par is passed and used as a constant
         if(cpage !== undefined) $scope.yangSP1 = cpage;
-        cpage = pageHash.get('App1', yin, yang);
+        cpage = pageHash.get('Home', yin, yang);
         if(cpage !== undefined) $scope.yinSP1 = cpage;
         //
         $scope.getSP1Class = function(type, page) {
@@ -105,7 +105,7 @@ YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
                     return $scope.yangSP1 == page ? yangPageActiveClass : '';
                 case yin:
                     return $scope.yinSP1 == page ? yinPageActiveClass : '';
-                default: alert('Error: App2, 001');
+                default: alert('Error: Home, 001');
             }
         };
         //
@@ -120,16 +120,16 @@ YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
             }
             else page = index;
             //
-            pageHash.put('App1', type, page, yang); // store the clicked page # into the service singleton
+            pageHash.put('Home', type, page, yang); // store the clicked page # into the service singleton
             //
             var position = null;
             switch(type) {
                 case yang:
-                    position = 'app1pos';
+                    position = home_pos;
                     $scope.yangSP1 = page;
                     break;
                 case yin: 
-                    position = 'app1neg';
+                    position = home_neg;
                     $scope.yinSP1 = page;
                     break;
                 default:
@@ -146,25 +146,26 @@ YouTiming.controller('App1', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
 
 // This controller is used in archive.html.
 // Duty: to GET single ticker's historical JSON data.
-YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'yin', 
+YouTiming.controller('Archive', ['$scope', '$routeParams', 'pageScroll', 'yang', 'yin', 
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'histdir', 'clicklist', 
-    'clickpage', 'pageHash', 'getData', 'guidance', 'miss', 
-    function($scope, $routeParams, pageScroll, yang, yin, yangPageActiveClass, yinPageActiveClass, 
-        tickerPerPage, histdir, clicklist, clickpage, pageHash, getData, guidance, miss) {
+    'clickpage', 'pageHash', 'getData', 'guidance', 'miss', 'archive_neg', 'archive_pos', 
+    function($scope, $routeParams, pageScroll, yang, yin, yangPageActiveClass, 
+        yinPageActiveClass, tickerPerPage, histdir, clicklist, clickpage, pageHash, getData, 
+        guidance, miss, archive_neg, archive_pos) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
         // restore the previously clicked page # from the service singleton
-        var cpage = pageHash.get('App2', yang, yang);  // the 3rd par is passed and used as a constant
+        var cpage = pageHash.get('Archive', yang, yang);  // the 3rd par is passed and used as a constant
         if(cpage !== undefined) $scope.yangSP2 = cpage;
-        cpage = pageHash.get('App2', yin, yang);
+        cpage = pageHash.get('Archive', yin, yang);
         if(cpage !== undefined) $scope.yinSP2 = cpage;
         //
         $scope.getSP2Class = function(type, page) {
             switch(type) {
                 case yang: return $scope.yangSP2 == page ? yangPageActiveClass : '';
                 case yin: return $scope.yinSP2 == page ? yinPageActiveClass : '';
-                default: alert('Error: App2, 001');
+                default: alert('Error: Archive, 001');
             }
         };
         //
@@ -180,16 +181,16 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
             }
             else page = index;
             //
-            pageHash.put('App2', type, page, yang);
+            pageHash.put('Archive', type, page, yang);
             //
             var position = null;
             switch(type) {
                 case yang:
-                    position = 'app2pos';
+                    position = archive_pos;
                     $scope.yangSP2 = page;
                     break;
                 case yin:
-                    position = 'app2neg';
+                    position = archive_neg;
                     $scope.yinSP2 = page;
                     break;
             }
@@ -205,7 +206,7 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
             }
             else page = index;
             //
-            pageHash.put('App2', type, page, yang); // store the clicked page # into the service singleton
+            pageHash.put('Archive', type, page, yang); // store the clicked page # into the service singleton
             //
             switch(type) {
                 case yang:
@@ -244,7 +245,7 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
                         case yin:
                             if(pri2 >= pri1) pri2 = undefined;
                             break;
-                        default: alert("Error: App2, 003"); break;
+                        default: alert("Error: Archive, 003"); break;
                     }
                     if(pri2 === undefined) {
                         $scope.portf.tickers2[i].sess.dat2 = 'n/a';
@@ -262,10 +263,10 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
             })
             .error(function(response, status, headers, config) {
                 $scope.portf.error = status;
-                console.log('Error: App2, 004')
+                console.log('Error: Archive, 004')
             });
             //
-            if(!$scope.yangSP2) $scope.yangSP2 = 1; // user selected page on app1.html view
+            if(!$scope.yangSP2) $scope.yangSP2 = 1; // user selected page on archive.html view
             if(!$scope.yinSP2) $scope.yinSP2 = 1;
             $scope.archive = true;
         }
@@ -273,7 +274,7 @@ YouTiming.controller('App2', ['$scope', '$routeParams', 'pageScroll', 'yang', 'y
         $scope.guidance = guidance;
         $scope.miss = miss;
     }]
-);
+); // Archive
 
 // Get stock quote in home.html.
 YouTiming.controller('StockREST', ['$scope', 'getData',

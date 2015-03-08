@@ -175,95 +175,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* yt classes */
 /* line 139, ../sass/style.scss */
-.yt-display-center {
-  display: block;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  vertical-align: middle !important;
-}
-
-/* line 145, ../sass/style.scss */
-.yt-metaphore {
-  font-size: 14px;
-  font-family: arial;
-}
-
-/* line 149, ../sass/style.scss */
-.yt-panel {
-  margin-right: -1px;
-  margin-left: -1px;
-}
-
-/* line 153, ../sass/style.scss */
-.yt-section-main {
-  margin: 20px auto;
-}
-
-/* line 156, ../sass/style.scss */
-.yt-section-sub {
-  margin: 10px auto;
-  width: 98%;
-}
-
-/* line 160, ../sass/style.scss */
-.yt-text-shadow {
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
-}
-
-/* line 163, ../sass/style.scss */
-.yt-yang-door-border {
-  border: lightblue solid 2px;
-}
-
-/* line 166, ../sass/style.scss */
-.yt-yang-panel-header {
-  color: white;
-  font-size: 18px;
-  text-align: center;
-}
-
-/* line 171, ../sass/style.scss */
-.yt-yin-panel-header {
-  color: lightred;
-  font-size: 18px;
-  text-align: center;
-}
-
-/* line 176, ../sass/style.scss */
-.yt-yin-door-border {
-  border: pink solid 2px;
-  color: lightred !important;
-}
-
-/* yt extra */
-/* line 183, ../sass/style.scss */
-div.panel {
-  transition: all 0.2s;
-  transition-delay: 0.4s;
-}
-
-/* line 188, ../sass/style.scss */
-div.panel-danger:hover {
-  background: #ffcccc;
-}
-
-/* line 192, ../sass/style.scss */
-div.panel-primary:hover {
-  background: #bbffdd;
-}
-
-/*
-div.panel-info:hover, div.panel-warning:hover {
-    background:$hover-background-color;
-}
-*/
-/* line 202, ../sass/style.scss */
 .yt-basic-highlight {
   border: solid #e9f0f5 1px;
   border-radius: 5px;
 }
 
-/* line 206, ../sass/style.scss */
+/* line 143, ../sass/style.scss */
 .yt-basic-highlight:hover {
   background: #ffffee;
   border: solid white 1px;
@@ -275,13 +192,92 @@ div.panel-info:hover, div.panel-warning:hover {
   transition: 0.5s ease-in-out;
 }
 
-/* line 217, ../sass/style.scss */
+/* line 154, ../sass/style.scss */
+.yt-display-center {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  vertical-align: middle !important;
+}
+
+/* line 161, ../sass/style.scss */
+.yt-metaphore {
+  font-size: 14px;
+  font-family: arial;
+}
+
+/* line 166, ../sass/style.scss */
+.yt-panel {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+/* line 171, ../sass/style.scss */
+.yt-pdc-highlight {
+  border: solid #e9f0f5 1px;
+  border-radius: 10px;
+  padding: 0px 0px 0px 8px;
+}
+
+/* line 176, ../sass/style.scss */
+.yt-pdc-highlight:hover {
+  background: #ffcccc;
+  border: solid #e9f0f5 1px;
+  box-shadow: 10px 10px 5px #888888;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+/* line 187, ../sass/style.scss */
+.yt-puc-highlight {
+  border: solid #e9f0f5 1px;
+  border-radius: 10px;
+  padding: 0px 0px 0px 8px;
+}
+
+/* line 192, ../sass/style.scss */
+.yt-puc-highlight:hover {
+  background: #bbffdd;
+  border: solid #e9f0f5 1px;
+  box-shadow: 10px 10px 5px #888888;
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -ms-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+/* line 203, ../sass/style.scss */
+.yt-section-main {
+  margin: 20px auto;
+}
+
+/* line 206, ../sass/style.scss */
+.yt-section-sub {
+  margin: 10px auto;
+  width: 98%;
+}
+
+/* line 210, ../sass/style.scss */
+.yt-text-shadow {
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.25), inset 1px 1px 0px rgba(0, 0, 0, 0.15);
+}
+
+/* line 214, ../sass/style.scss */
+.yt-yang-door-border {
+  border: lightblue solid 2px;
+}
+
+/* line 218, ../sass/style.scss */
 .yt-yang-highlight {
   border: solid white 1px;
   border-radius: 5px;
 }
 
-/* line 221, ../sass/style.scss */
+/* line 222, ../sass/style.scss */
 .yt-yang-highlight:hover {
   background: #ffffee;
   border: solid lightgreen 1px;
@@ -293,13 +289,20 @@ div.panel-info:hover, div.panel-warning:hover {
   transition: 0.5s ease-in-out;
 }
 
-/* line 232, ../sass/style.scss */
+/* line 233, ../sass/style.scss */
+.yt-yang-panel-header {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 239, ../sass/style.scss */
 .yt-yin-highlight {
   border: solid white 1px;
   border-radius: 5px;
 }
 
-/* line 236, ../sass/style.scss */
+/* line 243, ../sass/style.scss */
 .yt-yin-highlight:hover {
   background: #ffffee;
   border: solid lightpink 1px;
@@ -310,3 +313,39 @@ div.panel-info:hover, div.panel-warning:hover {
   -o-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
 }
+
+/* line 254, ../sass/style.scss */
+.yt-yin-panel-header {
+  color: lightred;
+  font-size: 18px;
+  text-align: center;
+}
+
+/* line 260, ../sass/style.scss */
+.yt-yin-door-border {
+  border: pink solid 2px;
+  color: lightred !important;
+}
+
+/* extra */
+/* line 267, ../sass/style.scss */
+div.panel {
+  transition: all 0.2s;
+  transition-delay: 0.4s;
+}
+
+/* line 272, ../sass/style.scss */
+div.panel-danger:hover {
+  background: #ffcccc;
+}
+
+/* line 276, ../sass/style.scss */
+div.panel-primary:hover {
+  background: #bbffdd;
+}
+
+/*
+div.panel-info:hover, div.panel-warning:hover {
+    background:$hover-background-color;
+}
+*/

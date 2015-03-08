@@ -2,7 +2,7 @@
     <div ng-cloak ng-hide='trace.error' class='col-sm-12'>
         <div ng-if='trace.yang_doors > 0' class='col-sm-6'>
             <!-- yang buttons -->
-            <div class='yt-basic-highlight'>
+            <div class='yt-puc-highlight'>
                 <div class='yt-section-sub'>
                     <div class='btn-group'>
                         <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yang'
@@ -16,7 +16,7 @@
         </div>
         <div ng-if='trace.yin_doors > 0' class='col-sm-6'>
             <!-- yin buttons -->
-            <div class='yt-basic-highlight'>
+            <div class='yt-pdc-highlight'>
                 <div class='yt-section-sub'>
                     <div class='btn-group'>
                         <span ng-repeat='ticker in trace.tickers | orderBy:predicate:reverse | door:yin' 
@@ -46,7 +46,7 @@
                             <div class='panel-body'>
                                 <div class='yt-yang-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
+                                        <h4>Metaphore, Trace, {{ticker.door.dat1}}:</h4>
                                         <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                     </section>
                                 </div>
@@ -77,7 +77,7 @@
                             <div class='panel-body'>
                                 <div class='yt-yin-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>Verse, Trace, {{ticker.door.dat1}}:</h4>
+                                        <h4>Metaphore, Trace, {{ticker.door.dat1}}:</h4>
                                         <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                     </section>
                                 </div>

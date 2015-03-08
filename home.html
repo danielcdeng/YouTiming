@@ -1,40 +1,43 @@
-﻿<div ng-controller='App1' class='basic-container'>
-    <div ng-cloak ng-hide='portf.error' class='col-sm-12'>
-        <div class='yt-section-sub'>
-            <section class='block-text'>Tickers listed in descending order according to the begin-date:</section>
-            <!-- countries list -->
-            <div class='primary-text'>*Regions (11): ^BSESN (India), ^FCHI (France), ^FTSE (England), FXI (China), ^GDAXI (Germany), ^HSI (H.K.), ^KS11 (Korea), ^N225 (Japan), RSX (Russia), ^SPX (USA), ^TWII (Taiwan).</span>
-        </div>
-        <!-- yang buttons -->
-        <div class='col-sm-6'>
-            <div class='yt-basic-highlight'>
-                <div class='yt-section-sub'>
-                    <span class='btn btn-info cursor-dn yt-yang-door-border'>Potential Upward Confirmation (PUC): {{yang_doors1}}</span>
-                    <div class='btn-group'>
-                        <span
-                            ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
-                            ng-click='selectSP1(clicklist, yang, $index + 1)'
-                            title='{{ticker.tick.titl}}'
-                            class='btn btn-info primary-button-text yt-text-shadow'>
-                            {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
-                        </span>
+﻿<div ng-controller='Home' class='basic-container'>
+
+    <div ng-cloak ng-hide='portf.error'>
+        <div class='col-sm-12'>
+            <div class='yt-section-sub'>
+                <section class='block-text'>Tickers listed in descending order according to the session-begin-date:</section>
+                <!-- countries list -->
+                <section class='primary-text'>The world market ETFs/indices:&nbsp;&nbsp;China/PROC (FXI), England (^FTSE), France (^FCHI), Germany (^GDAXI), Greece (GD.AT), H.K./PROC (^HSI), India (^BSESN), Japan (^N225), Korea/ROK (^KS11), Russia (RSX), Taiwan/ROC (^TWII), U.S.A. (^SPX, ^RUT, ^NDX, ^SOX).</section>
+            </div>
+            <!-- yang buttons -->
+            <div class='col-sm-6'>
+                <div class='yt-puc-highlight'>
+                    <div class='yt-section-sub'>
+                        <span class='btn btn-info cursor-dn yt-yang-door-border'>UT (Upward Timing): {{yang_doors1}}</span>
+                        <div class='btn-group'>
+                            <span
+                                ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yang'
+                                ng-click='selectSP1(clicklist, yang, $index + 1)'
+                                title='{{ticker.tick.titl}}'
+                                class='btn btn-info primary-button-text yt-text-shadow'>
+                                {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- yin buttons -->
-        <div class='col-sm-6'>
-            <div class='yt-basic-highlight'>
-                <div class='yt-section-sub'>
-                    <span class='btn btn-warning cursor-dn yt-yin-door-border'>Potential Downward Confirmation (PDC): {{yin_doors1}}</span>
-                    <div class='btn-group'>
-                        <span
-                            ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
-                            ng-click='selectSP1(clicklist, yin, $index + 1)'
-                            title='{{ticker.tick.titl}}'
-                            class='btn btn-warning primary-button-text yt-text-shadow'>
-                            {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
-                        </span>
+            <!-- yin buttons -->
+            <div class='col-sm-6'>
+                <div class='yt-pdc-highlight'>
+                    <div class='yt-section-sub'>
+                        <span class='btn btn-warning cursor-dn yt-yin-door-border'>DT (Downward Timing): {{yin_doors1}}</span>
+                        <div class='btn-group'>
+                            <span
+                                ng-repeat='ticker in portf.tickers1 | orderBy:predicate:reverse | door:yin'
+                                ng-click='selectSP1(clicklist, yin, $index + 1)'
+                                title='{{ticker.tick.titl}}'
+                                class='btn btn-warning primary-button-text yt-text-shadow'>
+                                {{ticker.tick.name}}&nbsp;{{ticker.door.dat1}}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -42,18 +45,17 @@
     </div>
 
     <div class='yt-section-sub'>&nbsp;</div>
-    <div ng-show='portf.tickers1'>
+    <div ng-cloak ng-show='portf.tickers1'>
         <div class='col-sm-12'>
             <div class='yt-section-sub'>
-                <span class='block-text'>Weekly processed:</span><br>
-                <span>2014-01-31 administrator note: Corrected/updated the switch board in the engine (Java).</span>
+                <span class='block-text'>Weekly Processed <span class='primary-text'>(please visit http://blog.udn.com/dan6898/21278469 for the traditional Chinese version)</span>: Added LNKD (LinkedIn)</span><br>
             </div>
         </div>
         <!-- left yang side -->
-        <div id='app1pos' class="col-sm-6">
+        <div id='home-pos' class="col-sm-6">
             <div class='panel panel-primary yt-panel'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title yt-yang-panel-header'>PUC</h3>
+                    <h3 class='panel-title yt-yang-panel-header'>UT</h3>
                 </div>
                 <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
@@ -81,30 +83,30 @@
                                 </div>
                                 <div class='yt-yang-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>{{ticker.door.dat1}} Verse:</h4>
+                                        <h4>{{ticker.door.dat1}} {{ticker.tick.name}} Metaphore:</h4>
                                         <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                     </section>
                                     <section class='yt-section-sub'>
-                                        <h5>The Potential Average Pattern Top:</h5>
+                                        <h5>Average Pattern Top from the Portfolio:</h5>
                                         <pattern-data g="getColor(d)" s="ticker" t="yang"></pattern-data>
                                     </section>
                                     <section class='yt-section-sub'>
                                         <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yang"></metaphore-note>
                                     </section>
                                     <section class='yt-section-sub'>
-                                        <h5>The Potential Average Session Top:</h5>
+                                        <h5>Average {{ticker.tick.name}} Session Top:</h5>
                                         <session-data r="roundup(f, p)" s="ticker" t="yang"></session-data>
                                     </section>
                                 </div>
                                 <div class='yt-yang-highlight'>
                                     <div class='yt-section-sub'>
-                                        <h4>Potential Average Top Months:</h4>
+                                        <h4>Average {{ticker.tick.name}} Top Months:</h4>
                                         <monthly-season g="getColor(d)" s="ticker" t="yang"></monthly-season>
                                     </div>
                                 </div>
                                 <div class='yt-yang-highlight'>
                                     <div class='yt-section-sub'>
-                                        <h4>Current Session:</h4>
+                                        <h4>Current {{ticker.tick.name}} Session:</h4>
                                         <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc>
                                         <current-session ctf="convertToFloat(vs)" s="ticker" t="yang"></current-session>
                                     </div>
@@ -116,10 +118,10 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div id='app1neg' class="col-sm-6">
+        <div id='home-neg' class="col-sm-6">
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
-                    <h3 class='panel-title yt-yin-panel-header'>PDC</h3>
+                    <h3 class='panel-title yt-yin-panel-header'>DT</h3>
                 </div>
                 <div class='panel-body primary-larger-text'>
                     <!-- pagination -->
@@ -147,30 +149,30 @@
                                 </div>
                                 <div class='yt-yin-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>{{ticker.door.dat1}} Verse:</h4>
+                                        <h4>{{ticker.door.dat1}} {{ticker.tick.name}} Metaphore:</h4>
                                         <div class='yt-metaphore'><span ng-include='"/boc/" + ticker.door.fore + ".html"'></span></div>
                                     </section>
                                     <section class='yt-section-sub'>
-                                        <h5>The Potential Average Pattern Bottom:</h5>
+                                        <h5>Average Pattern Bottom from the Portfolio:</h5>
                                         <pattern-data g="getColor(d)" s="ticker" t="yin"></pattern-data>
                                     </section>
                                     <section class='yt-section-sub'>
                                         <metaphore-note a="average(f1, f2)" r="roundup(f, p)" s="ticker" t="yin"></metaphore-note>
                                     </section>
                                     <section class='yt-section-sub'>
-                                        <h5>The Potential Average Session Bottom:</h5>
+                                        <h5>Average {{ticker.tick.name}} Session Bottom:</h5>
                                         <session-data r="roundup(f, p)" s="ticker" t="yin"></session-data>
                                     </section>
                                 </div>
                                 <div class='yt-yin-highlight'>
                                     <div class='yt-section-sub'>
-                                        <h4>Potential Average Bottom Months:</h4>
+                                        <h4>Average {{ticker.tick.name}} Bottom Months:</h4>
                                         <monthly-season g="getColor(d)" s="ticker" t="yin"></monthly-season>
                                     </div>
                                 </div>
                                 <div class='yt-yin-highlight'>
                                     <div class='yt-section-sub'>
-                                        <h4>Current Session:</h4>
+                                        <h4>Current {{ticker.tick.name}} Session:</h4>
                                         <last-date-price-proc s="ticker.door.mclo"></last-date-price-proc>
                                         <current-session ctf="convertToFloat(vs)" s="ticker" t="yin"></current-session>
                                     </div>

@@ -1,5 +1,5 @@
-﻿//
-angular.module('customFilter', [])
+﻿// the var YT_Filters is just a nameing container; it's not used anywhere
+var YT_Filters = angular.module('customFilter', [])
 .filter('date', function() {
     return function(data, propertyName) {
         if (angular.isArray(data) && angular.isString(propertyName)) {

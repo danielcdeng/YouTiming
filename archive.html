@@ -1,8 +1,8 @@
-<div ng-controller='App2' class='basic-container'>
+<div ng-controller='Archive' class='basic-container'>
     <div ng-cloak ng-hide='portf.error' class='col-sm-12'>
         <!-- yang buttons -->
         <div class='col-sm-6'>
-            <div class='yt-basic-highlight'>
+            <div class='yt-puc-highlight'>
                 <div class='yt-section-sub'>
                     <div class='btn-group'>
                         <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yang'
@@ -15,7 +15,7 @@
         </div>
         <!-- yin buttons -->
         <div class='col-sm-6'>
-            <div class='yt-basic-highlight'>
+            <div class='yt-pdc-highlight'>
                 <div class='yt-section-sub'>
                     <div class='btn-group'>
                         <span ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | door:yin'
@@ -30,7 +30,7 @@
 
     <div ng-show='portf.tickers2'>
         <!-- left yang side -->
-        <div id='app2pos' class='col-sm-6 yt-section-main'>
+        <div id='archive-pos' class='col-sm-6 yt-section-main'>
             <div class='panel panel-primary'>
                 <div class='panel-heading'>
                     <h3 class='panel-title yt-yang-panel-header'>PUC</h3>
@@ -47,7 +47,7 @@
                             <div class='panel-body'>
                                 <div class='yt-yang-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
+                                        <h4>Metaphore, Archive, {{ticker.door.dat1}}:</h4>
                                         <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                     </section>
                                 </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
         <!-- right yin side -->
-        <div id='app2neg' class='col-sm-6 yt-section-main'>
+        <div id='archive-neg' class='col-sm-6 yt-section-main'>
             <div class='panel panel-danger'>
                 <div class='panel-heading'>
                     <h3 class='panel-title yt-yin-panel-header'>PDC</h3>
@@ -81,7 +81,7 @@
                             <div class='panel-body'>
                                 <div class='yt-yin-highlight'>
                                     <section class='yt-section-sub'>
-                                        <h4>Verse, Archive, {{ticker.door.dat1}}:</h4>
+                                        <h4>Metaphore, Archive, {{ticker.door.dat1}}:</h4>
                                         <div ng-include='"/boc/" + ticker.door.fore + ".html"'></div>
                                     </section>
                                 </div>
