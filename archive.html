@@ -43,7 +43,12 @@
                     </div>
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yang:yangSP2:pageSize' class='yt-section-main'>
                         <div class='panel panel-info'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'>
+                                <h4 class='panel-title'>
+                                    <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span>
+                                    <!-- Wait to be fixed, can not dig out sessions of the same fore code: a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span -->
+                                </h4>
+                            </div>
                             <div class='panel-body'>
                                 <div class='yt-yang-highlight'>
                                     <section class='yt-section-sub'>
@@ -77,7 +82,12 @@
                     </div>
                     <div ng-repeat='ticker in portf.tickers2 | orderBy:predicate:reverse | range:yin:yinSP2:pageSize' class='yt-section-main'>
                         <div class='panel panel-warning'>
-                            <div class='panel-heading'><h4 class='panel-title'><span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span><a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span></h4></div>
+                            <div class='panel-heading'>
+                                <h4 class='panel-title'>
+                                    <span title='{{ticker.tick.titl}}'>{{ticker.tick.name}}<span class='primary-text'><i>-{{ticker.tick.sequ}}</i></span></span>
+                                    <!-- Wait to be fixed, can not dig out sessions of the same fore code: a ng-href='#/trace/{{ticker.door.fore}}/{{ticker.door.type}}' class='pull-right route-menu'>Trace</a><span class='pull-right'>&nbsp;&nbsp;</span -->
+                                </h4>
+                            </div>
                             <div class='panel-body'>
                                 <div class='yt-yin-highlight'>
                                     <section class='yt-section-sub'>

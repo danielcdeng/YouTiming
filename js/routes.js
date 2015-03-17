@@ -20,9 +20,11 @@ YouTiming.config(['$httpProvider', '$resourceProvider', '$routeProvider',
         .when('/contact', {
             templateUrl: '/contact.html'
         })
+        /*
         .when('/trace/:fore/:type', {  // the trace view, controller "Trace"
             templateUrl: '/trace.html'
         })
+        */
         .otherwise({
             templateUrl: '/home.html'       // the home view, controlelr "App1"
         });

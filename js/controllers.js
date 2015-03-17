@@ -302,6 +302,7 @@ YouTiming.controller('StockREST', ['$scope', 'getData',
 
 // This controller is used in trace.html.
 // Duty: gather all the ones of the same forecast from the archive in the portfolio.
+/*
 YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScroll', 
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'modeldir', 'portfname', 
     'histdir', 'arcfname', 'clicklist', 'clickpage', 'getData', 'guidance', 'miss', 
@@ -409,3 +410,4 @@ YouTiming.controller('Trace', ['$scope', '$routeParams', 'yang', 'yin', 'pageScr
         });
     }]
 );
+*/
