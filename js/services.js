@@ -51,11 +51,12 @@ YouTiming.service('getData', ['$http', '$resource', function($http, $resource) {
 
 // Treat this service as a hash to store clicked page # for App1.
 // This is done because the service is a singleton. 
-YouTiming.service('pageHash', ['$location', function($location) {
+YouTiming.service('pageHash', ['$location', 'home_page', 'archive_page', 
+    function($location, home_page, archive_page) {
     var self = this;
     // get
     this.get = function(view, door, yang) {
-        if(view == 'App1') {
+        if(view == home_page) {
             if(door == yang) {
                 return self.yangApp1;
             }
@@ -63,7 +64,7 @@ YouTiming.service('pageHash', ['$location', function($location) {
                 return self.yinApp1;
             }
         }
-        else if(view == 'App2') {
+        else if(view == archive_page) {
             if(door == yang) {
                 return self.yangApp2;
             }
@@ -78,7 +79,7 @@ YouTiming.service('pageHash', ['$location', function($location) {
     };
     // put
     this.put = function(view, door, page, yang) {
-        if(view == 'App1') {
+        if(view == home_page) {
             if(door == yang) {  // ? cannot see the constant, yang, so passed to avoid hard-coding
                 self.yangApp1 = page;
             }
@@ -86,7 +87,7 @@ YouTiming.service('pageHash', ['$location', function($location) {
                 self.yinApp1 = page;
             }
         }
-        else if(view == 'App2') {
+        else if(view == archive_page) {
             if(door == yang) {
                 self.yangApp2 = page;
             }

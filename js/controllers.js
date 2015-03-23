@@ -87,16 +87,16 @@ YouTiming.controller('App0', ['$scope', 'yang', 'yin', 'modeldir',
 //       it is mainly responsible for pagination if ther user clicks.
 YouTiming.controller('Home', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageActiveClass', 
     'yinPageActiveClass','tickerPerPage', 'clicklist', 'clickpage', 'pageHash', 'guidance', 'miss',
-    'home_pos', 'home_neg',  
+    'home_pos', 'home_neg', 'home_page', 
     function($scope, pageScroll, yang, yin, yangPageActiveClass, yinPageActiveClass, tickerPerPage, 
-        clicklist, clickpage, pageHash, guidance, miss, home_pos, home_neg) {
+        clicklist, clickpage, pageHash, guidance, miss, home_pos, home_neg, home_page) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
         // restore the previously clicked page # from the service singleton
-        var cpage = pageHash.get('Home', yang, yang);  // the 3rd par is passed and used as a constant
+        var cpage = pageHash.get(home_page, yang, yang);  // the 3rd par is passed and used as a constant
         if(cpage !== undefined) $scope.yangSP1 = cpage;
-        cpage = pageHash.get('Home', yin, yang);
+        cpage = pageHash.get(home_page, yin, yang);
         if(cpage !== undefined) $scope.yinSP1 = cpage;
         //
         $scope.getSP1Class = function(type, page) {
@@ -120,7 +120,7 @@ YouTiming.controller('Home', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
             }
             else page = index;
             //
-            pageHash.put('Home', type, page, yang); // store the clicked page # into the service singleton
+            pageHash.put(home_page, type, page, yang); // store the clicked page # into the service singleton
             //
             var position = null;
             switch(type) {
@@ -148,17 +148,18 @@ YouTiming.controller('Home', ['$scope', 'pageScroll', 'yang', 'yin', 'yangPageAc
 // Duty: to GET single ticker's historical JSON data.
 YouTiming.controller('Archive', ['$scope', '$routeParams', 'pageScroll', 'yang', 'yin', 
     'yangPageActiveClass', 'yinPageActiveClass', 'tickerPerPage', 'histdir', 'clicklist', 
-    'clickpage', 'pageHash', 'getData', 'guidance', 'miss', 'archive_neg', 'archive_pos', 
+    'clickpage', 'pageHash', 'getData', 'guidance', 'miss', 'archive_neg', 'archive_pos',
+    'archive_page', 
     function($scope, $routeParams, pageScroll, yang, yin, yangPageActiveClass, 
         yinPageActiveClass, tickerPerPage, histdir, clicklist, clickpage, pageHash, getData, 
-        guidance, miss, archive_neg, archive_pos) {
+        guidance, miss, archive_neg, archive_pos, archive_page) {
         //
         $scope.clicklist = clicklist;
         $scope.clickpage = clickpage;
         // restore the previously clicked page # from the service singleton
-        var cpage = pageHash.get('Archive', yang, yang);  // the 3rd par is passed and used as a constant
+        var cpage = pageHash.get(archive_page, yang, yang);  // the 3rd par is passed and used as a constant
         if(cpage !== undefined) $scope.yangSP2 = cpage;
-        cpage = pageHash.get('Archive', yin, yang);
+        cpage = pageHash.get(archive_page, yin, yang);
         if(cpage !== undefined) $scope.yinSP2 = cpage;
         //
         $scope.getSP2Class = function(type, page) {
@@ -181,7 +182,7 @@ YouTiming.controller('Archive', ['$scope', '$routeParams', 'pageScroll', 'yang',
             }
             else page = index;
             //
-            pageHash.put('Archive', type, page, yang);
+            pageHash.put(archive_page, type, page, yang);
             //
             var position = null;
             switch(type) {
@@ -206,7 +207,7 @@ YouTiming.controller('Archive', ['$scope', '$routeParams', 'pageScroll', 'yang',
             }
             else page = index;
             //
-            pageHash.put('Archive', type, page, yang); // store the clicked page # into the service singleton
+            pageHash.put(archive_page, type, page, yang); // store the clicked page # into the service singleton
             //
             switch(type) {
                 case yang:
